@@ -1,0 +1,95 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+:root {
+  --light-red: hsl(0, 100%, 67%);
+  --orangey-yellow: hsl(39, 100%, 56%);
+  --green-teal: hsl(166, 100%, 37%);
+  --cobalt-blue: hsl(234, 85%, 45%);
+  --light-slate-blue: hsl(252, 100%, 67%);
+  --light-royale-blue: hsl(241, 81%, 54%);
+  --violet-blue: hsla(256, 72%, 46%, 1);
+  --persian-blue: hsla(241, 72%, 46%, 0);
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.main .containerResults {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(to bottom, var(--light-slate-blue), var(--light-royale-blue));
+  max-width: 400px;
+  height: 500px;
+  border-radius: 30px;
+}
+
+.main .containerResults h1 {
+  color: #B6ACFF;
+  font-weight: bolder;
+  font-size: 2rem;
+  padding-top: 10px;
+}
+
+.main .containerResults .result {
+  padding: 10px 0;
+  background-image: linear-gradient(to bottom, var(--violet-blue), var(--persian-blue));
+  border-radius: 100%;
+  width: 200px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main .containerResults .result p {
+  font-size: 4rem;
+  color: white;
+  font-weight: bolder;
+}
+
+.main .containerResults .result span {
+  font-size: 1.4rem;
+  color: #8073FF;
+  font-weight: 600;
+}
+
+.main .containerResults .description {
+  padding: 0 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main .containerResults .description h2 {
+  color: white;
+  font-size: 2.3rem;
+  font-weight: bolder;
+}
+
+.main .containerResults .description p {
+  color: #8073FF;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  padding: 20px 0;
+}
+
+
+
+
+
+
+
