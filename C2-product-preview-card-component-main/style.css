@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-family: 'Fraunces', serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--cream);
+}
+
+html, body {
+  height: 100%;
+}
+
+:root {
+  --darkCyan: hsl(158, 36%, 37%);
+  --cream: hsl(30, 38%, 92%);
+  --veryDarBlue: hsl(212, 21%, 14%);
+  --darkGrayishBlue: hsl(228, 12%, 48%);
+  --white: hsl(0, 0%, 100%);
+}
+
+.main {
+  display: flex;
+  background: var(--white);
+  border-radius: 20px;
+  max-height: 500px;
+  max-width: 700px;
+}
+
+.main .containerImage img {
+  width: 350px;
+  height: 500px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.main .containerDescription {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  justify-content: space-evenly;
+  align-items: start;
+  padding: 0 45px;
+}
+
+.main .containerDescription h3 {
+  font-size: 1rem;
+  font-weight: 100;
+  color: var(--darkGrayishBlue);
+  letter-spacing: 3px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.main .containerDescription h1 {
+  font-size: 2.2rem;
+  color: var(--veryDarBlue);
+  line-height: 0.9;
+}
+
+.main .containerDescription p {
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--darkGrayishBlue);
+  font-size: 1em;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.main .containerDescription .containerPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+}
+
+.main .containerDescription .containerPrice h2 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--darkCyan);
+}
+
+.main .containerDescription .containerPrice span {
+  font-size: 1rem;
+  font-weight: 100;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration-line: line-through;
+  color: var(--darkGrayishBlue);
+}
+
+.main .containerDescription .containerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.main .containerDescription .containerButton a {
+  text-decoration: none;
+  color: var(--white);
+  background: var(--darkCyan);
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  transition: background 0.3s ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.main .containerDescription a img {
+  margin: 0 10px;
+}
+
+.main .containerDescription a:hover {
+  background: #2D3929;
+}
+
+@media (max-width:768px) {
+  body {
+    align-items: start;
+  }
+
+  .main {
+    margin-top: 20px;
+    flex-direction: column;
+    max-height: 95vh;
+    max-width: 90vw;
+  }
+
+  .main .containerImage img {
+    max-height: 250px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0;
+  }
+
+  .main .containerDescription {
+    padding: 0 25px;
+    max-width: 300px;
+    height: 500px;
+  }
+
+  .main .containerDescription h3 {
+    font-size: 1rem;
+  }
+  
+  .main .containerDescription h1 {
+    font-size: 2rem;
+  }
+  
+  .main .containerDescription p {
+    font-size: 0.9em;
+  }
+
+  .main .containerDescription .containerPrice {
+    width: 75%;
+  }
+
+  .main .containerDescription .containerPrice h2 {
+    font-size: 2rem;
+  }
+  
+  .main .containerDescription .containerPrice span {
+    font-size: 0.9rem;
+  }
+
+  .attribution {
+    display: none;
+  }
+}
+
+.attribution {
+  position: absolute;
+  top: 0;
+}
+
