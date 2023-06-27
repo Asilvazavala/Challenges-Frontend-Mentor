@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Antonio Silva Frontend Mentor | Interactive rating component</title>
+  <link href="./output.css" rel="stylesheet"></head>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700" rel="stylesheet">
+  <!-- Sweet ALert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<body class="font-Overpass flex justify-center items-center h-full bg-VeryDarkBlue">
+  <main class="flex flex-col justify-evenly items-start text-sm w-72 h-96 px-3 rounded-3xl bg-gradient-to-b from-DarkBlue to-DarkBlueGrad min-[370px]:w-[330px] min-[370px]:h-[400px] min-[420px]:w-[380px] min-[420px]:h-[420px] md:w-[450px] md:h-[420px] md:px-8 md:py-4">
+    <article id="firstCard" class="flex flex-col justify-evenly items-start w-full h-full">
+      <section class="rounded-full bg-Circle p-3">
+        <img class="h-4 w-4 min-[370px]:w-6 min-[370px]:h-6 min-[420px]:w-8 min-[420px]:h-8 md:h-8 md:w-8" src="../images/icon-star.svg" alt="iconStar" />
+      </section>
+
+      <section class="[&>p]:text-LightGrey">
+        <h1 class="text-White text-xl font-bold mb-2 min-[370px]:text-2xl md:text-3xl">How did we do?</h1>
+        <p class="text-xs leading-5 min-[370px]:text-sm min-[420px]:text-[16px]  md:text-lg">Please let us know how we did with your support request. All feedback is appreciated to help us
+          improve our offering!</p> 
+      </section>
+
+      <section class="w-full">
+        <form class="text-White flex justify-between items-center transition-colors [&>label]:bg-Circle [&>label]:rounded-full [&>label]:py-2 [&>label]:px-4 [&>label]:cursor-pointer md:[&>label]:px-5 " name="form1" action="">
+          <input class="hidden" type="radio">
+          <label class="hover:bg-Orange item min-[370px]:text-[18px] md:text-lg" for="one">1</label>
+          <input class="hidden" type="radio">
+          <label class="hover:bg-Orange item min-[370px]:text-[18px] md:text-lg" for="two">2</label>
+          <input class="hidden" type="radio">
+          <label class="hover:bg-Orange item min-[370px]:text-[18px] md:text-lg" for="three">3</label>
+          <input class="hidden" type="radio">
+          <label class="hover:bg-Orange item min-[370px]:text-[18px] md:text-lg" for="four">4</label>
+          <input class="hidden" type="radio">
+          <label class="hover:bg-Orange item min-[370px]:text-[18px] md:text-lg" for="five">5</label>
+        </form>
+      </section>
+
+      <input type="submit" form="form1" value="SUBMIT" id="btnSubmit" class="w-full text-center bg-Orange text-White rounded-3xl py-3 font-bold transition-colors hover:bg-White hover:text-Orange cursor-pointer min-[370px]:text-[16px] md:text-lg">
+    </article>
+
+    <article id="secondCard" class="flex flex-col justify-evenly items-center h-full hidden">
+      <section class="flex flex-col justify-center items-center">
+        <img class="w-32 h-20 mb-5 min-[370px]:w-36 min-[370px]:h-24 md:w-40 md:h-28 md:mb-6" src="../images/illustration-thank-you.svg" alt="Thank you">
+        <span id="spanResult" class="text-Orange text-xs bg-Circle px-2 py-1 rounded-full text-center font-bold min-[370px]:text-[16px] md:text-lg md:px-3"></span>
+      </section>
+
+      <section>
+        <h2 class="text-White font-bold text-xl text-center mb-2 min-[370px]:text-2xl md:text-3xl">Thank you!</h2>
+        <p class="text-LightGrey text-center text-sm min-[370px]:text-[16px] md:text-lg">We appreciate you taking the time to give a rating. If you ever need more support, 
+          don’t hesitate to get in touch!</p>
+      </section>
+    </article>
+  </main>
+  
+  <div class="fixed text-MediumGrey top-0 h-8 text-xs w-full flex flex-col justify-center items-center bg-DarkBlue md:h-12 min-[370px]:text-[16px] md:text-lg">
+    <p>Challenge by: <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" link="noopener noreferer" class="underline text-Orange font-bold">Frontend Mentor.</a></p> 
+    <p>Coded by: <a href="https://www.linkedin.com/in/antonio-silva-developer/" target="_blank" link="noopener noreferer" class="underline text-Orange font-bold">Antonio Silva.</a></p>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
