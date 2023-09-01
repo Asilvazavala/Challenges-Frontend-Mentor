@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="./output.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Antonio Silva Frontend Mentor | NFT preview card component</title>
+</head>
+<body class="bg-VeryDarkBlueMainBG font-Outfit">
+  <header class="text-xl mt-1 mx-auto w-full flex flex-col justify-center items-center text-White">
+    <p>Challenge by 
+      <a 
+        class="font-bold underline hover:text-blue-500"
+        href="https://www.frontendmentor.io?ref=challenge" 
+        target="_blank"
+        link="noopener noreferer"
+      >Frontend Mentor.
+      </a>
+    </p>
+    <p>Coded by 
+      <a 
+        class="font-bold underline hover:text-blue-500"
+        href="https://antonio-silva-portfolio.onrender.com/"
+        target="_blank"
+        link="noopener noreferer"
+      >Antonio Silva.
+      </a>
+    </p>
+  </header>
+
+  <section class="px-2 py-6 bg-OutBlueBg min-[300px]:w-72 min-[350px]:w-[21rem] flex flex-col justify-between mx-auto rounded-xl mt-2">
+    <main class="bg-VeryDarkBlueCardBG min-[300px]:w-64 min-[350px]:w-[19rem] flex flex-col justify-between mx-auto p-4 rounded-xl shadow-2xl shadow-ShadowBlueBg">
+      <article class="relative group">
+        <img class="w-[80vw] md:w-[40vw] lg:w-[25vw] rounded-xl cursor-pointer inset-0 transition-opacity duration-300 opacity-100 hover:opacity-50" src="./images/image-equilibrium.jpg" alt="Equilibrium">
+        <img class="z-10 m-auto w-12 cursor-pointer inset-0 absolute transition-opacity duration-300 opacity-0 group-hover:opacity-100" src="./images/icon-view.svg" alt="View">
+        <div class="w-full cursor-pointer transition-opacity duration-300 rounded-xl bg-Cyan absolute inset-0 opacity-0 group-hover:opacity-50"></div>
+      </article>
+      <h1 class="text-White font-bold text-xl py-4 hover:text-Cyan cursor-pointer transition-colors w-fit">Equilibrium #3429</h1>
+      <p class="text-SoftBlue">Our Equilibrium collection promotes balance and calm.</p>
+      
+      <aside class="flex justify-between py-4 border-b-2 border-solid border-VeryDarkBlueLine">
+        <article class="flex gap-x-2 items-center">
+          <img width="10" height="10" src="./images/icon-ethereum.svg" alt="Ethereum">
+          <span class="text-Cyan">0.041 ETH</span>
+        </article>
+        <article class="flex gap-x-2 items-center">
+          <img width="19" height="19" src="./images/icon-clock.svg" alt="Clock">
+          <span class="text-SoftBlue">3 days left</span>
+        </article>
+      </aside>
+
+      <footer class="flex items-center pt-4 pb-2">
+        <img width="30" class="rounded-full border-2 border-solid border-White" src="./images/image-avatar.png" alt="Avatar">
+        <span class="text-SoftBlue ml-4 mr-1">Creation of</span> 
+        <p class="text-White hover:text-Cyan cursor-pointer transition-colors">Jules Wyvern</p>
+      </footer>
+    </main>
+  </section>
+</body>
+</html>
