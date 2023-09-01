@@ -136,6 +136,7 @@ html, body {
   }
 
   .main .containerImage img {
+    max-width: 90vw;
     max-height: 250px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 0;
@@ -179,5 +180,49 @@ html, body {
 .attribution {
   position: absolute;
   top: 0;
+}
+
+@media (max-width:350px) {
+  .main .containerDescription {
+    width: 90vw;
+    padding: 0 8px;
+  }
+
+  .main .containerImage img {
+    max-height: 40vh;
+  }
+
+  .main .containerDescription {
+    width: 85vw;
+  }
+
+  .main .containerDescription h3 {
+    font-size: 0.9rem;
+  }
+  
+  .main .containerDescription h1 {
+    font-size: 1.3em;
+  }
+  
+  .main .containerDescription p {
+    font-size: 0.75em;
+  }
+
+  .main .containerDescription .containerPrice h2 {
+    font-size: 1.5rem;
+  }
+  
+  .main .containerDescription .containerPrice span {
+    font-size: 0.9rem;
+  }
+  
+  .main .containerDescription .containerButton {
+    width: 95%;
+  }
+
+  .main .containerDescription .containerButton a {
+    padding: 8px 0;
+  }
+  
 }
 
