@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="./output.css">
+    <title>Antonio Silva Frontend Mentor | FAQ Accordion Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="font-KumbhSans bg-gradient-to-b from-GradSoftViolet to-GradSoftBlue h-[100vh]">
+    <header class="text-xl mt-1 mx-auto w-full flex flex-col justify-center items-center">
+      <p>Challenge by 
+        <a 
+          class="font-bold underline hover:text-white"
+          href="https://www.frontendmentor.io?ref=challenge" 
+          target="_blank"
+          link="noopener noreferer"
+        >Frontend Mentor.
+        </a>
+      </p>
+      <p>Coded by 
+        <a 
+          class="font-bold underline hover:text-white"
+          href="https://antonio-silva-portfolio.onrender.com/"
+          target="_blank"
+          link="noopener noreferer"
+        >Antonio Silva.
+        </a>
+      </p>
+    </header>
+
+    <main class="relative flex gap-x-8 justify-center items-center max-w-[850px] bg-white rounded-3xl mx-auto mt-6 py-12">      
+      <section class="w-[50vw] overflow-hidden bg-[url('./images/bg-pattern-desktop.svg')] bg-cover bg-no-repeat">
+        <img class="absolute left-[-10%] top-[42%] w-44" src="./images/illustration-box-desktop.svg" alt="Box">
+        <img class="object-cover h-[55vh] ml-[-12%] overflow-visible" src="./images/illustration-woman-online-desktop.svg" alt="FAQ">
+      </section>
+
+      <section class="w-[50vw] flex flex-col pr-24 pb-8">
+        <h1 class="text-VeryDarkDesaturatedBlue font-bold text-3xl mb-4">FAQ</h1>
+
+        <article class="border-b-2 border-solid border-DividerLightGrayishBlue py-4 flex flex-col justify-center">          
+          <input id="first" class="peer/first hidden" type="checkbox" name="status" />
+          <aside class="flex justify-between items-center cursor-pointer peer-checked/first:text-VeryDarkDesaturatedBlue peer-checked/first:font-bold">
+            <label for="first" class="text-VeryDarkGrayishBlue cursor-pointer">How many team members can I invite?</label>
+            <picture class="peer-checked/first:rotate-180">
+              <img src="./images/icon-arrow-down.svg" alt="ArrowDown">
+            </picture>
+          </aside>
+          <div class="hidden peer-checked/first:absolute mt-2">
+            <span class="text-DarkGrayishBlue">You can invite up to 2 additional users on the Free plan. There is no limit on 
+              team members for the Premium plan.</span>
+          </div>
+        </article>
+
+        <article class="border-b-2 border-solid border-DividerLightGrayishBlue py-4 flex flex-col justify-center">          
+          <input id="second" class="peer/second hidden" type="checkbox" name="status" />
+          <aside class="flex justify-between items-center cursor-pointer peer-checked/second:text-VeryDarkDesaturatedBlue peer-checked/second:font-bold">
+            <label for="second" class="text-VeryDarkGrayishBlue cursor-pointer">What is the maximum file upload size?</label>
+            <picture class="peer-checked/second:rotate-180">
+              <img src="./images/icon-arrow-down.svg" alt="ArrowDown">
+            </picture>
+          </aside>
+          <div class="hidden peer-checked/second:block mt-2">
+            <span class="text-DarkGrayishBlue">No more than 2GB. All files in your account must fit your allotted storage space.</span>
+          </div>
+        </article>
+
+        <article class="border-b-2 border-solid border-DividerLightGrayishBlue py-4 flex flex-col justify-center">          
+          <input id="third" class="peer/third hidden" type="checkbox" name="status" />
+          <aside class="flex justify-between items-center cursor-pointer peer-checked/third:text-VeryDarkDesaturatedBlue peer-checked/third:font-bold">
+            <label for="third" class="text-VeryDarkGrayishBlue cursor-pointer">How do I reset my password?</label>
+            <picture class="peer-checked/third:rotate-180">
+              <img src="./images/icon-arrow-down.svg" alt="ArrowDown">
+            </picture>
+          </aside>
+          <div class="hidden peer-checked/third:block mt-2">
+            <span class="text-DarkGrayishBlue">Click “Forgot password” from the login page or “Change password” from your profile page.
+              A reset link will be emailed to you.</span>
+          </div>
+        </article>
+
+        <article class="border-b-2 border-solid border-DividerLightGrayishBlue py-4 flex flex-col justify-center">          
+          <input id="fourth" class="peer/fourth hidden" type="checkbox" name="status" />
+          <aside class="flex justify-between items-center cursor-pointer peer-checked/fourth:text-VeryDarkDesaturatedBlue peer-checked/fourth:font-bold">
+            <label for="fourth" class="text-VeryDarkGrayishBlue cursor-pointer">Can I cancel my subscription?</label>
+            <picture class="peer-checked/fourth:rotate-180">
+              <img src="./images/icon-arrow-down.svg" alt="ArrowDown">
+            </picture>
+          </aside>
+          <div class="hidden peer-checked/fourth:block mt-2">
+            <span class="text-DarkGrayishBlue">Yes! Send us a message and we’ll process your request no questions asked.</span>
+          </div>
+        </article>
+
+        <article class="border-b-2 border-solid border-DividerLightGrayishBlue py-4 flex flex-col justify-center">          
+          <input id="fifth" class="peer/fifth hidden" type="checkbox" name="status" />
+          <aside class="flex justify-between items-center cursor-pointer peer-checked/fifth:text-VeryDarkDesaturatedBlue peer-checked/fifth:font-bold">
+            <label for="fifth" class="text-VeryDarkGrayishBlue cursor-pointer">Do you provide additional support?</label>
+            <picture class="peer-checked/fifth:rotate-180">
+              <img src="./images/icon-arrow-down.svg" alt="ArrowDown">
+            </picture>
+          </aside>
+          <div class="hidden peer-checked/fifth:block mt-2">
+            <span class="opacity-1 text-DarkGrayishBlue">Chat and email support is available 24/7. Phone lines are open during normal business hours.</span>
+          </div>
+        </article>
+
+      </section>
+    </main>
+  </body>
+</html>
