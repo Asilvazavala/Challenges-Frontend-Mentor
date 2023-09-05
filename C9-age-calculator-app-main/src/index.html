@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <title>Antonio Silva Frontend Mentor | Age calculator app</title>
+  <link rel="stylesheet" href="./output.css">
+</head>
+<body class="h-screen w-screen bg-LightGrey font-Poppins">
+  <header class="text-xl mt-1 mx-auto w-full flex flex-col justify-center items-center">
+    <p>Challenge by 
+      <a 
+        class="font-bold underline hover:text-Purple"
+        href="https://www.frontendmentor.io?ref=challenge" 
+        target="_blank"
+        link="noopener noreferer"
+      >Frontend Mentor.
+      </a>
+    </p>
+    <p>Coded by 
+      <a 
+        class="font-bold underline hover:text-Purple"
+        href="https://antonio-silva-portfolio.onrender.com/"
+        target="_blank"
+        link="noopener noreferer"
+      >Antonio Silva.
+      </a>
+    </p>
+  </header>
+
+  <main class="flex flex-col mt-4 bg-White w-[88vw] sm:w-[600px] lg:w-[800px] mx-auto p-4 sm:p-8 rounded-xl rounded-br-[6rem] sm:rounded-br-[10rem]">
+    <section class="flex gap-x-3 sm:gap-x-6 font-bold w-[80vw] sm:w-[450px] lg:w-[600px]">
+      <article class="flex flex-col gap-y-2">
+        <p id="dayTitle" class="text-SmokeyGrey tracking-widest">DAY</p>
+        <input id="dayInput" type="number" placeholder="DD" class="focus:outline-Purple text-xl sm:text-2xl w-[25vw] sm:w-40 border-2 border-solid border-LightGrey p-3 rounded-md">
+        <p id="dayError" class="text-LightRed opacity-0 text-sm">Value (1-31)</p>
+      </article>
+  
+      <article class="flex flex-col gap-y-2">
+        <p id="monthTitle" class="text-SmokeyGrey tracking-widest">MONTH</p>
+        <input id="monthInput" type="number" placeholder="MM" class="focus:outline-Purple text-xl sm:text-2xl w-[25vw] sm:w-40 border-2 border-solid border-LightGrey p-3 rounded-md">
+        <p id="monthError" class="text-LightRed opacity-0 text-sm">Value (1-12)</p>
+      </article>
+
+      <article class="flex flex-col gap-y-2">
+        <p id="yearTitle" class="text-SmokeyGrey tracking-widest">YEAR</p>
+        <input id="yearInput" type="number" placeholder="YYYY" class="focus:outline-Purple text-xl sm:text-2xl w-[25vw] sm:w-40 border-2 border-solid border-LightGrey p-3 rounded-md">
+        <p id="yearError" class="text-LightRed opacity-0 text-sm">Must be in the past</p>
+      </article>
+    </section>
+
+    <div class="flex items-center">
+      <hr class="flex-grow border-t-2 border-LightGrey sm:mr-2 sm:mb-0">
+      <picture id="btnArrow" class="bg-Purple hover:bg-OffBlack rounded-full w-20 sm:w-24 h-20 sm:h-24 flex justify-center items-center cursor-pointer">
+        <img class="md:w-16 w-12 md:h-16 h-12 text-center" src="./images/icon-arrow.svg" alt="Icon">
+      </picture>
+      <hr class="flex-grow border-t-2 border-LightGrey sm:hidden">
+    </div>
+    
+
+    <section class="flex flex-col justify-start items-start text-[45px] min-[370px]:text-[54px] sm:text-8xl font-bold sm:gap-y-2">
+      <article class="flex gap-x-2">
+        <span id="yearValue" class="sm:tracking-widest text-Purple">--</span>
+        <p class="italic text-OffBlack">years</p>
+      </article>
+
+      <article class="flex gap-x-2">
+        <span id="monthValue" class="sm:tracking-widest text-Purple">--</span>
+        <p class="italic text-OffBlack">months</p>
+      </article>
+
+      <article class="flex gap-x-2">
+        <span id="dayValue" class="sm:tracking-widest text-Purple">--</span>
+        <p class="italic text-OffBlack">days</p>
+      </article>
+    </section>
+  </main>
+  
+</body>
+<script defer src="./script.js"></script>
+</html>
