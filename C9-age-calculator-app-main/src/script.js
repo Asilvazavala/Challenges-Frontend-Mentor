@@ -55,12 +55,28 @@ function validateDayForMonth(month, day) {
   return true; 
 }
 
+function validateLeapYear(month, day, year) {
+  const selectedMonth = parseInt(month);
+  const selectedDay = parseInt(day);
+  const selectedYear = parseInt(year);
+
+  if (isNaN(selectedMonth) || isNaN(selectedDay) || isNaN(selectedYear)) {
+    return true; 
+  }
+
+  if (selectedDay === 29 && selectedMonth === 2 && selectedYear % 4 !== 0) {
+    return false
+  }
+
+  return true; 
+}
+
 dayInput.addEventListener("input", function () {
   const dayIsValid = validateInput(
     dayInput,
     dayError,
     dayTitle,
-    "Value (1-31)",
+    "Must be (1-31)",
     dayInput.value < 1 || dayInput.value > 31 || dayInput.value === ""
   );
 
@@ -72,6 +88,7 @@ dayInput.addEventListener("input", function () {
   }
 
   const dayIsValidForMonth = validateDayForMonth(monthInput.value, dayInput.value);
+  const isLeapYear = validateLeapYear(monthInput.value, dayInput.value, yearInput.value);
 
   if (!dayIsValidForMonth) {
     errors.day = true;
@@ -85,6 +102,19 @@ dayInput.addEventListener("input", function () {
     dayInput.classList.add("focus:outline-Purple", "border-Purple");
     dayInput.classList.remove("focus:outline-LightRed", "border-LightRed");
   }
+
+  if (!isLeapYear) {
+    errors.year = true;
+    yearError.classList.remove("opacity-0");
+    yearError.textContent = "Not Leap Year";
+    yearInput.classList.add("focus:outline-LightRed", "border-LightRed");
+    yearInput.classList.remove("focus:outline-Purple", "border-Purple");
+  } else {
+    errors.year = null;
+    yearError.classList.add("opacity-0");
+    yearInput.classList.add("focus:outline-Purple", "border-Purple");
+    yearInput.classList.remove("focus:outline-LightRed", "border-LightRed");
+  }
 })
 
 monthInput.addEventListener("input", function () {
@@ -92,7 +122,7 @@ monthInput.addEventListener("input", function () {
     monthInput,
     monthError,
     monthTitle,
-    "Value (1-12)",
+    "Must be (1-12)",
     monthInput.value < 1 || monthInput.value > 12 || monthInput.value === ""
   );
 
@@ -103,6 +133,7 @@ monthInput.addEventListener("input", function () {
   }
 
   const dayIsValidForMonth = validateDayForMonth(monthInput.value, dayInput.value);
+  const isLeapYear = validateLeapYear(monthInput.value, dayInput.value, yearInput.value);
 
   if (!dayIsValidForMonth) {
     errors.day = true;
@@ -115,6 +146,19 @@ monthInput.addEventListener("input", function () {
     dayError.classList.add("opacity-0");
     dayInput.classList.add("focus:outline-Purple", "border-Purple");
     dayInput.classList.remove("focus:outline-LightRed", "border-LightRed");
+  }
+
+  if (!isLeapYear) {
+    errors.year = true;
+    yearError.classList.remove("opacity-0");
+    yearError.textContent = "Not Leap Year";
+    yearInput.classList.add("focus:outline-LightRed", "border-LightRed");
+    yearInput.classList.remove("focus:outline-Purple", "border-Purple");
+  } else {
+    errors.year = null;
+    yearError.classList.add("opacity-0");
+    yearInput.classList.add("focus:outline-Purple", "border-Purple");
+    yearInput.classList.remove("focus:outline-LightRed", "border-LightRed");
   }
 })
 
@@ -141,6 +185,35 @@ yearInput.addEventListener("input", function () {
     errors.year = true
   } else {
     errors.year = null
+  }
+
+  const dayIsValidForMonth = validateDayForMonth(monthInput.value, dayInput.value);
+  const isLeapYear = validateLeapYear(monthInput.value, dayInput.value, yearInput.value);
+
+  if (!dayIsValidForMonth) {
+    errors.day = true;
+    dayError.classList.remove("opacity-0");
+    dayError.textContent = "Not exist in month";
+    dayInput.classList.add("focus:outline-LightRed", "border-LightRed");
+    dayInput.classList.remove("focus:outline-Purple", "border-Purple");
+  } else {
+    errors.day = null;
+    dayError.classList.add("opacity-0");
+    dayInput.classList.add("focus:outline-Purple", "border-Purple");
+    dayInput.classList.remove("focus:outline-LightRed", "border-LightRed");
+  }
+
+  if (!isLeapYear) {
+    errors.year = true;
+    yearError.classList.remove("opacity-0");
+    yearError.textContent = "Not Leap Year";
+    yearInput.classList.add("focus:outline-LightRed", "border-LightRed");
+    yearInput.classList.remove("focus:outline-Purple", "border-Purple");
+  } else {
+    errors.year = null;
+    yearError.classList.add("opacity-0");
+    yearInput.classList.add("focus:outline-Purple", "border-Purple");
+    yearInput.classList.remove("focus:outline-LightRed", "border-LightRed");
   }
 })
 
@@ -230,8 +303,11 @@ btnArrow.addEventListener("click", function () {
 function getDateDifference(startDate, endDate) {
   const start = new Date(startDate);
   const end = new Date(endDate);
+  const yearLessThan100 = parseInt(yearInput.value) < 100 
+    ? 1900
+    : 0
 
-  let years = end.getFullYear() - start.getFullYear();
+  let years = end.getFullYear() - start.getFullYear() + yearLessThan100;
   let months = end.getMonth() - start.getMonth();
   let days = end.getDate() - start.getDate();
 
