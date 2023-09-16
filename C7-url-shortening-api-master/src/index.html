@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="./output.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,700;1,600;1,700&display=swap" rel="stylesheet">
+  <!-- Box Icons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <title>Antonio Silva | Shortly URL shortening API Challenge</title>
+
+</head>
+<body class="h-screen w-full font-Poppins max-w-7xl overflow-x-hidden">
+  <nav class="flex justify-between mt-6 px-5 sm:px-10 lg:px-20 relative">
+    <ul class="hidden lg:flex gap-x-6 justify-center items-center">
+      <img class="mr-2" src="./images/logo.svg" alt="logo" />
+      <li class="text-GrayishViolet cursor-pointer font-bold hover:text-VeryDarkBlue transition-colors">Features</li>
+      <li class="text-GrayishViolet cursor-pointer font-bold hover:text-VeryDarkBlue transition-colors">Pricing</li>
+      <li class="text-GrayishViolet cursor-pointer font-bold hover:text-VeryDarkBlue transition-colors">Resources</li>
+    </ul>
+    <ul class="hidden lg:flex gap-x-6 justify-center items-center">
+      <li class="text-GrayishViolet cursor-pointer font-bold hover:text-VeryDarkBlue transition-colors">Login</li>
+      <li class="cursor-pointer text-white font-bold bg-Cyan rounded-full px-6 py-2 hover:brightness-110 transition-all">Sign Up</li>
+    </ul>
+
+    <ul class="lg:hidden">
+      <img class="mr-2" src="./images/logo.svg" alt="logo" />
+    </ul>
+    <ul class="lg:hidden">
+      <i id="menuMobileButton" class='bx bx-menu cursor-pointer text-3xl text-GrayishViolet'></i>
+    </ul>
+
+    <ul id="menuMobile" class="hidden lg:hidden absolute top-12 flex-col gap-y-4 justify-center items-center text-white font-bold bg-DarkViolet w-[90%] p-6 rounded-lg">
+      <li class="cursor-pointer">Features</li>
+      <li class="cursor-pointer">Pricing</li>
+      <li class="cursor-pointer w-full text-center">Resources</li>
+      <hr class="border-GrayishViolet w-full">
+      <li class="cursor-pointer">Login</li>
+      <li class="cursor-pointer bg-Cyan rounded-full w-full text-center py-2 hover:brightness-110 transition-all">Sign Up</li>
+    </ul>
+  </nav>
+
+  <section class="lg:h-[90%] w-screen flex flex-col lg:flex-row lg:justify-between items-center gap-y-6 gap-x-20 pr-8 lg:pr-0 pl-5 sm:pl-10 lg:pl-20 mb-16 lg:mb-0">
+    <picture class="lg:hidden mt-4">
+      <img class="bg-cover" src="./images/illustration-working.svg" alt="Working" />
+    </picture>
+    
+    <article class="md:max-w-xl flex flex-col justify-center items-center lg:justify-start lg:items-start">
+      <h1 class="text-VeryDarkBlue text-4xl md:text-7xl font-bold leading-[1.15] tracking-tight text-center lg:text-left">More than just shorter links</h1>
+      <p class="text-GrayishViolet mt-2 mb-4 lg:mb-8 text-xl text-center lg:text-left">Build your brand’s recognition and get detailed insights 
+        on how your links are performing.</p>
+      <button class="text-white font-bold bg-Cyan rounded-full px-9 py-3 text-xl hover:brightness-110 transition-all">Get Started</button>
+    </article>
+
+    <picture class="hidden lg:block">
+      <img src="./images/illustration-working.svg" alt="Working" />
+    </picture>
+  </section>
+
+  <section class="relative bg-DarkViolet rounded-lg mx-5 md:mx-10 lg:mx-20 -mb-16 z-40">
+    <article class="bg-cover bg-no-repeat py-6 lg:py-12 flex flex-col lg:flex-row justify-center items-center gap-y-8 lg:gap-y-0 gap-x-4 px-6 lg:px-16 rounded-lg bg-[url('./images/bg-shorten-mobile.svg')] md:bg-[url('./images/bg-shorten-desktop.svg')]">
+      <div class="flex flex-col lg:flex-[1_1_80%] w-full relative">
+        <input class="w-full py-3 px-6 rounded-lg md:text-xl focus:outline-Cyan" type="text" placeholder="Shorten a link here..." id="inputLink">
+        <span class="text-Red absolute -bottom-7 italic hidden" id="spanError">Please add a link</span>
+      </div>
+      <button class="text-white font-bold w-full bg-Cyan lg:flex-[1_1_20%] rounded-lg px-9 py-3 lg:text-xl hover:brightness-[1.2] transition-all" id="btnGetShortLink">Shorten It!</button>
+    </article>
+  </section>
+
+  <section class="bg-Gray px-5 md:px-10 lg:px-20 pb-20 z-0 flex flex-col">
+    <div id="shortLinksContainer" class="pt-[5.5rem]"></div>
+    <div class="items-end justify-end hidden" id="historyButtonContainer">
+      <button class="text-white font-bold bg-Red rounded-md px-4 py-2 text-lg hover:brightness-[1.2] transition-all" onclick="clearLocalStorage()">Clean history</button>
+    </div>
+
+    <header class="max-w-md mx-auto pt-10 lg:pt-28">
+      <h3 class="text-center text-VeryDarkBlue font-bold text-[1.7rem] md:text-4xl">Advanced Statistics</h3>
+      <p class="text-center text-gray-500 mt-3 mb-24">Track how your links are performing across the web with our 
+        advanced statistics dashboard.</p>
+    </header>
+
+    <main class="flex lg:flex-row flex-col gap-x-8 gap-y-10 justify-center items-center lg:justify-normal lg:items-start">
+      <article class="flex flex-col bg-white pb-8 pt-16 px-6 rounded-md relative max-w-[350px] max-h-80 lg:max-h-60">
+        <div class="bg-Cyan h-full w-3 top-[100%] left-[50%] lg:h-3 lg:w-full absolute lg:top-[50%] lg:left-[100%]"></div>
+        <picture class="bg-DarkViolet rounded-full w-20 h-20 flex justify-center items-center absolute -top-10 right-[36%] lg:right-auto">
+          <img class="w-10 h-10" src="./images/icon-brand-recognition.svg" alt="Brand"/>
+        </picture>
+        <h4 class="text-VeryDarkBlue font-bold text-2xl text-center lg:text-left">Brand Recognition</h4>
+        <p class="text-GrayishViolet mt-3 text-center lg:text-left">Boost your brand recognition with each click. Generic links don’t 
+          mean a thing. Branded links help instil confidence in your content.</p>
+      </article>
+  
+      <article class="flex flex-col bg-white pb-8 pt-16 px-6 rounded-md relative max-w-[350px] mt-12 lg:mt-10 max-h-80 lg:max-h-60">
+        <div class="bg-Cyan h-full w-3 top-[100%] left-[50%] lg:h-3 lg:w-full absolute lg:top-[50%] lg:left-[100%]"></div>
+        <picture class="bg-DarkViolet rounded-full w-20 h-20 flex justify-center items-center absolute -top-10 right-[36%] lg:right-auto">
+          <img class="w-10 h-10" src="./images/icon-detailed-records.svg" alt="Records"/>
+        </picture>
+        <h4 class="text-VeryDarkBlue font-bold text-2xl text-center lg:text-left">Detailed Records</h4>
+        <p class="text-GrayishViolet mt-3 text-center lg:text-left">Gain insights into who is clicking your links. Knowing when and where 
+          people engage with your content helps inform better decisions.</p>
+      </article>
+  
+      <article class="flex flex-col bg-white pb-8 pt-16 px-6 rounded-md relative max-w-[350px] mt-12 lg:mt-20 max-h-80 lg:max-h-60">
+        <picture class="bg-DarkViolet rounded-full w-20 h-20 flex justify-center items-center absolute -top-10 right-[36%] lg:right-auto">
+          <img class="w-10 h-10" src="./images/icon-fully-customizable.svg" alt="Customizable"/>
+        </picture>
+        <h4 class="text-VeryDarkBlue font-bold text-2xl text-center lg:text-left">Fully Customizable</h4>
+        <p class="text-GrayishViolet mt-3 text-center lg:text-left">Improve brand awareness and content discoverability through customizable 
+          links, supercharging audience engagement.</p>
+      </article>  
+    </main>
+
+  </section>
+
+  <section class="bg-DarkViolet bg-cover bg-no-repeat py-14 px-5 bg-[url('./images/bg-boost-mobile.svg')] md:bg-[url('./images/bg-boost-desktop.svg')]">
+    <article class="flex flex-col justify-center items-center gap-y-4">
+      <h3 class="text-white font-bold text-3xl text-center">Boost your links today</h3>
+      <button class="text-white font-bold bg-Cyan rounded-full px-6 py-2 text-lg hover:brightness-110 transition-all">Get Started</button>
+    </article>
+  </section>
+
+   <footer class="bg-VeryDarkViolet text-white py-14 lg:pl-20 flex lg:flex-row flex-col gap-y-10 lg:gap-x-4 justify-center items-center lg:justify-normal lg:items-start">
+    <picture class="lg:flex-[2_1_400px]">
+      <img src="./images/logoWhite.svg" alt="Logo" />
+    </picture>
+
+    <aside class="flex flex-col lg:flex-[1_1_200px] gap-y-1 ml-4 lg:ml-0">
+      <p class="font-bold text-xl mb-3">Features</p>
+      <span class="text-GrayishViolet cursor-pointer font-bold hover:text-Cyan transition-colors w-fit">Link Shortening</span>
+      <span class="text-GrayishViolet cursor-pointer font-bold hover:text-Cyan transition-colors w-fit">Branded Links</span>
+      <span class="text-GrayishViolet cursor-pointer font-bold hover:text-Cyan transition-colors w-fit">Analytics</span>
+    </aside>
+
+    <aside class="flex flex-col lg:flex-[1_1_200px] gap-y-1">
+      <p class="font-bold text-xl mb-3">Resources</p>
+      <span class="text-GrayishViolet cursor-pointer font-bold hover:text-Cyan transition-colors w-fit">Blog</span>
+      <span class="text-GrayishViolet cursor-pointer font-bold hover:text-Cyan transition-colors w-fit">Developers</span>
+      <span class="text-GrayishViolet cursor-pointer font-bold hover:text-Cyan transition-colors w-fit">Support</span>
+    </aside>
+
+    <aside class="flex flex-col lg:flex-[1_1_200px] gap-y-1">
+      <p class="font-bold text-xl mb-3">Company</p>
+      <span class="text-GrayishViolet font-bold cursor-pointer hover:text-Cyan transition-colors w-fit">About</span>
+      <span class="text-GrayishViolet font-bold cursor-pointer hover:text-Cyan transition-colors w-fit">Our Team</span>
+      <span class="text-GrayishViolet font-bold cursor-pointer hover:text-Cyan transition-colors w-fit">Careers</span>
+      <span class="text-GrayishViolet font-bold cursor-pointer hover:text-Cyan transition-colors w-fit">Contact</span>
+    </aside>
+
+    <aside class="flex gap-x-6 lg:flex-[2_1_300px]">
+      <img class="cursor-pointer w-6 h-6" src="./images/icon-facebook.svg" alt="Facebook" id="facebook-img" onmouseover="changeImage('facebook')" onmouseout="changeImage('')" />
+      <img class="cursor-pointer w-6 h-6" src="./images/icon-twitter.svg" alt="Twitter" id="twitter-img" onmouseover="changeImage('twitter')" onmouseout="changeImage('')" />
+      <img class="cursor-pointer w-6 h-6" src="./images/icon-pinterest.svg" alt="Pinterest" id="pinterest-img" onmouseover="changeImage('pinterest')" onmouseout="changeImage('')" />
+      <img class="cursor-pointer w-6 h-6" src="./images/icon-instagram.svg" alt="Instagram" id="instagram-img" onmouseover="changeImage('instagram')" onmouseout="changeImage('')" />
+    </aside>
+    
+  </footer> 
+  <script defer src="./script.js"></script>
+</body>
+</html>
