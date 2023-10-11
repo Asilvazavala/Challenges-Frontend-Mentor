@@ -5,7 +5,7 @@ import Search from "./Search";
 
 const HeaderHome: React.FC = () => {
   return (
-    <section className="mt-6 flex flex-col gap-y-6 lg:flex-row justify-between">
+    <section className="mt-6 flex flex-col gap-y-6 sm:flex-row justify-between">
       <article className="relative">
         <Search />
       </article>

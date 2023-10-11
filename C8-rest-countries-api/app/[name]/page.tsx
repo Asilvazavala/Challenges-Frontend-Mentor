@@ -1,13 +1,8 @@
-import Navbar from "@/components/Navbar";
-import { CountriesProvider } from '../../hooks/CountriesContext';
-import DetailsCountry from "./DetailsCountry";
+import DetailsCountry from "../../components/DetailsCountry";
 
 const Home = () => { 
   return (
-    <CountriesProvider>
-      <Navbar />
-      <DetailsCountry />
-    </CountriesProvider>
+    <DetailsCountry />
   )
 }
 

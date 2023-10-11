@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { API } from '../types/types';
-import data from '../api/data.json';
+import db from '../api/data.json';
 
 // Define el tipo para el contexto
 type CountriesContextType = {
@@ -14,9 +14,11 @@ type CountriesContextType = {
   setMenuFilterIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
-  detailsCountry: API | null | string;
-  setDetailsCountry: React.Dispatch<React.SetStateAction<API | null | string>>;
+  detailsCountry: API | undefined;
+  setDetailsCountry: React.Dispatch<React.SetStateAction<API | undefined>>;
   updateDetailsCountry: (newData: string) => void;
+  nameCountry: string;
+  setNameCountry: React.Dispatch<React.SetStateAction<string>>;
 };
 
 // Crea el contexto
@@ -41,8 +43,11 @@ export function CountriesProvider({ children }: CountriesProviderProps) {
   const [filterRegion, setFilterRegion] = useState<string | null>(null);
   const [menuFilterisOpen, setMenuFilterIsOpen] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
-  const [detailsCountry, setDetailsCountry] = useState<API | null | string>(null);
-  
+  const [detailsCountry, setDetailsCountry] = useState<API | undefined>();
+  const [nameCountry, setNameCountry] = useState<string>('');
+
+  const data: API[] = db as API[];
+
   useEffect(() => {
     const filtered = filterRegion === null
       ? data.filter((country) => country.name.toLowerCase().includes(search.toLowerCase()))
@@ -52,7 +57,7 @@ export function CountriesProvider({ children }: CountriesProviderProps) {
         );
   
     setCountriesData(filtered);
-  }, [filterRegion, search]);
+  }, [filterRegion, search, data]);
 
   const value: CountriesContextType = {
     countriesData,
@@ -68,7 +73,9 @@ export function CountriesProvider({ children }: CountriesProviderProps) {
     updateDetailsCountry: (newData) => {
       const selectedCountry = data.find(c => c.name === newData);
       setDetailsCountry(selectedCountry);
-    }
+    },
+    nameCountry,
+    setNameCountry
   };
 
   return (

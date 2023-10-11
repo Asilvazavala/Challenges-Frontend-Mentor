@@ -7,7 +7,7 @@ export type API = {
   capital?:       string;
   altSpellings?:  string[];
   subregion:      string;
-  region:         Region;
+  region?:        Region;
   population:     number;
   latlng?:        number[];
   demonym:        string;

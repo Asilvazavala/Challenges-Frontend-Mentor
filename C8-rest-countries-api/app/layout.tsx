@@ -1,5 +1,7 @@
+import Navbar from '@/components/Navbar'
 import './globals.css'
 import type { Metadata } from 'next'
+import { CountriesProvider } from '@/hooks/CountriesContext'
 
 export const metadata: Metadata = {
   title: 'Antonio Silva | Rest Countries',
@@ -17,7 +19,12 @@ export default function RootLayout({
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'/>
       </head>
 
-      <body>{children}</body>
+      <body>
+        <CountriesProvider>
+          <Navbar />
+          {children}
+        </CountriesProvider>
+      </body>
     </html>
   )
 }
