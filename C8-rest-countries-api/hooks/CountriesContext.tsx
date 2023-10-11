@@ -14,6 +14,9 @@ type CountriesContextType = {
   setMenuFilterIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   search: string;
   setSearch: React.Dispatch<React.SetStateAction<string>>;
+  detailsCountry: API | null | string;
+  setDetailsCountry: React.Dispatch<React.SetStateAction<API | null | string>>;
+  updateDetailsCountry: (newData: string) => void;
 };
 
 // Crea el contexto
@@ -38,6 +41,7 @@ export function CountriesProvider({ children }: CountriesProviderProps) {
   const [filterRegion, setFilterRegion] = useState<string | null>(null);
   const [menuFilterisOpen, setMenuFilterIsOpen] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+  const [detailsCountry, setDetailsCountry] = useState<API | null | string>(null);
   
   useEffect(() => {
     const filtered = filterRegion === null
@@ -58,7 +62,13 @@ export function CountriesProvider({ children }: CountriesProviderProps) {
     menuFilterisOpen,
     setMenuFilterIsOpen,
     search,
-    setSearch
+    setSearch,
+    detailsCountry,
+    setDetailsCountry,
+    updateDetailsCountry: (newData) => {
+      const selectedCountry = data.find(c => c.name === newData);
+      setDetailsCountry(selectedCountry);
+    }
   };
 
   return (

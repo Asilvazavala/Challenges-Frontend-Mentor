@@ -6,12 +6,12 @@ const DropdownMenu = () => {
   const { filterRegion, setFilterRegion, menuFilterisOpen, setMenuFilterIsOpen } = useCountries();
 
   const handleFilter = (option: string) => {
-    setFilterRegion(option === filterRegion ? null : option);
+    setFilterRegion(option === 'All' ? null : option);
     setMenuFilterIsOpen(!menuFilterisOpen);
   };
   
 
-  const options = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+  const options = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania', 'All'];
 
   return (
     <div className="relative inline-block">
