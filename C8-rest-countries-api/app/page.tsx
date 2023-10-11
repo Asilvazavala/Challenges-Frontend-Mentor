@@ -1,13 +1,13 @@
 import CardCountries from "@/components/CardCountries";
 import Navbar from "@/components/Navbar";
-import Search from "@/components/Search";
+import HeaderHome from "@/components/HeaderHome";
 import { CountriesProvider } from '../hooks/CountriesContext';
 
 export default function Home() {
   return (
     <CountriesProvider>
       <Navbar />
-      <Search />
+      <HeaderHome />
       <CardCountries />
     </CountriesProvider>
   )
