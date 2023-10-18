@@ -16,9 +16,7 @@
 body {
   height: 100vh;
   width: 100vw;
-  background-image: url(./images/bg-pattern-desktop.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background: rgb(0 0 0 / .1);
 }
 
 header {
@@ -47,6 +45,10 @@ main {
   align-items: start;
   max-width: 1000px;
   background: var(---LinearGradWhite);
+}
+
+.logoMobile {
+  display: none;
 }
 
 main .main__information {
@@ -148,6 +150,11 @@ main .main__image img {
   height: 100%;
 }
 
+#iconError,
+#textError {
+  display: none;
+}
+
 @media (max-width:800px) {
   body {
     overflow-x: hidden;
@@ -160,6 +167,12 @@ main .main__image img {
     max-width: 600px;
   }
 
+  .logoMobile {
+    display: block;
+    align-self: flex-start;
+    margin: 1rem;
+  }
+
   .main__information {
     order: 2;
     padding: 0;
@@ -167,13 +180,28 @@ main .main__image img {
     text-align: center;
   }
 
+  .main__information picture {
+    display: none;
+  }
+
+  main .main__information .icon__arrow {
+    padding: .72rem 1.7rem;
+  }
+
   .main__image {
     order: 1;
   }
 
+  main .main__information .icon__error {
+    right: 80px;
+    top: 5px;
+  }
+
   main .main__image img {
     width: 100vw;
-    height: 30vh;
+    height: 45vh;
+    object-fit: cover;
+    aspect-ratio: 61/80;
   }
 
   main .main__information span,
@@ -191,6 +219,12 @@ main .main__image img {
 
   main .main__information input {
     font-size: .9rem;
+    padding-right: 7rem;
+  }
+
+  form small p {
+    padding: .3rem 1.5rem;
+    text-align: start;
   }
 }
 
