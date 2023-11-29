@@ -1,6 +1,6 @@
 ---
 import Button from "./Button.astro";
-
+import logo from '../images/logo.svg'
 interface Route {
   name: string;
   link: string;
@@ -11,27 +11,27 @@ const routes: Route[] = [
   {
     name: 'Home',
     link: '/',
-    icon: '../../src/images/icon-budgeting.svg'
+    icon: '/images/icon-budgeting.svg'
   },
   {
     name: 'About',
     link: '/',
-    icon: '../../src/images/icon-onboarding.svg'
+    icon: '/images/icon-onboarding.svg'
   },
   {
     name: 'Contact',
     link: '/',
-    icon: '../../src/images/icon-online.svg'
+    icon: '/images/icon-online.svg'
   },
   {
     name: 'Blog',
     link: '/',
-    icon: '../../src/images/icon-api.svg'
+    icon: '/images/icon-api.svg'
   },
   {
     name: 'Careers',
     link: '/',
-    icon: '../../src/images/icon-budgeting.svg'
+    icon: '/images/icon-budgeting.svg'
   },
 ];
 
@@ -39,7 +39,7 @@ const routes: Route[] = [
 
 <header class="flex justify-between items-center py-4 lg:py-0 px-4 md:px-28">
   <figure>
-    <img src="../../src/images/logo.svg" alt="Logo" title="Logo">
+    <img src="/images/logo.svg" alt="Logo" title="Logo">
   </figure>
 
   <nav class="hidden lg:block">
@@ -54,7 +54,7 @@ const routes: Route[] = [
 
   <nav class="lg:hidden">    
     <img 
-      src="../../src/images/icon-hamburger.svg" 
+      src="/images/icon-hamburger.svg" 
       alt="icon-hamburger" 
       title="icon-hamburger" 
       id="openMenuMobile"
@@ -63,7 +63,7 @@ const routes: Route[] = [
     />
     
     <img 
-      src="../../src/images/icon-close.svg" 
+      src="/images/icon-close.svg" 
       alt="icon-close" 
       title="icon-close" 
       id="closeMenuMobile"
