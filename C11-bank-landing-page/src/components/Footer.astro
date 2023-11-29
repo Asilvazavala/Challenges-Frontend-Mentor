@@ -8,27 +8,27 @@ interface Social {
 
 const socials: Social[] = [
   {
-    link: "www.facebook.com",
+    link: "https://facebook.com",
     imagen: "/images/icon-facebook.svg",
     name: "icon-facebook"
   },
   {
-    link: "www.youtube.com",
+    link: "https://youtube.com",
     imagen: "/images/icon-youtube.svg",
     name: "icon-youtube"
   },
   {
-    link: "www.twitter.com",
+    link: "https://twitter.com",
     imagen: "/images/icon-twitter.svg",
     name: "icon-twitter"
   },
   {
-    link: "www.pinterest.com",
+    link: "https://pinterest.com",
     imagen: "/images/icon-pinterest.svg",
     name: "icon-pinterest"
   },
   {
-    link: "www.instagram.com",
+    link: "https://instagram.com",
     imagen: "/images/icon-instagram.svg",
     name: "icon-instagram"
   }
@@ -43,7 +43,7 @@ const socials: Social[] = [
 
     <aside class="flex gap-3">
       {socials.map((social) => (
-        <a href={social.link}> 
+        <a target="_blank" href={social.link}> 
           <img src={social.imagen} alt={social.name} title={social.name} class="hover:text-LimeGreen transition-colors" />
         </a>
       ))}
