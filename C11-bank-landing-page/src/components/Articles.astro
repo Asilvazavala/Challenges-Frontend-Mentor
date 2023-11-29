@@ -1,0 +1,55 @@
+---
+interface Article {
+  imagen: string;
+  author: string;
+  title: string;
+  description: string;
+}
+
+const articles: Article[] = [
+  {
+    imagen:"../../images/image-currency.jpg",
+    author: "By Claire Robinson",
+    title: "Receive money in any currency with no fees",
+    description: "The world is getting smaller and we’re becoming more mobile. So why should you be forced to only receive money in a single …"
+  },
+  {
+    imagen:"../../images/image-restaurant.jpg",
+    author: "By Wilson Hutton",
+    title: "Treat yourself without worrying about money",
+    description: "Our simple budgeting feature allows you to separate out your spending and set realistic limits each month. That means you …"
+  },
+  {
+    imagen:"../../images/image-plane.jpg",
+    author: "By Wilson Hutton",
+    title: "Take your Easybank card wherever you go",
+    description: "We want you to enjoy your travels. This is why we don’t charge any fees on purchases while you’re abroad. We’ll even show you …"
+  },
+  {
+    imagen:"../../images/image-confetti.jpg",
+    author: "By Claire Robinson",
+    title: "Our invite-only Beta accounts are now live!",
+    description: "After a lot of hard work by the whole team, we’re excited to launch our closed beta. It’s easy to request an invite through the site .."
+  },
+]
+---
+
+<div class="bg-VeryLightGray px-4 md:px-28 py-20">
+  <h2 class="text-DarkBlue text-4xl mb-10 text-center lg:text-left">Latest Articles</h2>
+
+  <section class="flex flex-col lg:flex-row gap-6 justify-between">
+    {articles.map((article) => (
+      <article class="flex flex-col gap-2 bg-white rounded pb-2">
+        <img 
+          src={article.imagen} 
+          alt={article.title} 
+          title={article.title} 
+          class="mb-2 h-56 w-full rounded-t"
+        />
+        <span class="text-GrayishBlue text-xs px-4">{article.author}</span>
+        <h3 class="text-DarkBlue text-lg px-4 leading-5 lg:hover:text-LimeGreen transition-colors cursor-pointer">{article.title}</h3>
+        <p class="text-GrayishBlue text-sm px-4">{article.description}</p>
+      </article>
+    ))}
+  </section>
+</div>

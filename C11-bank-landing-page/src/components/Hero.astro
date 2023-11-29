@@ -1,0 +1,31 @@
+---
+import Button from "./Button.astro";
+
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-2 h-screen bg-VeryLightGray overflow-hidden">
+  <article class="order-2 lg:order-1 flex flex-col gap-y-4 lg:gap-y-8 lg:justify-center pl-4 
+  lg:pl-28 lg:max-w-xl lg:mb-28">
+    <h2 class="text-DarkBlue text-4xl text-center lg:text-left lg:text-5xl leading-[3rem] lg:leading-[4rem] font-[400]">Next generation digital banking</h2>
+    <p class="text-lg text-GrayishBlue font-[400] text-center lg:text-left">Take your financial life online. Your Easybank account will be a one-stop-shop 
+      for spending, saving, budgeting, investing, and much more.
+    </p>
+    <Button title="Request Invite" className="px-7 w-fit text-sm mx-auto lg:mx-0" />
+  </article>
+
+  <figure class="order-1 bg-[url('../../images/bg-intro-mobile.svg')] relative max-[500px]:h-[40vh] bg-cover
+  lg:order-2 lg:bg-[url('../../images/bg-intro-desktop.svg')] lg:pr-40 lg:-mt-72 lg:-ml-24 md:mb-40 lg:mb-0">
+    <img 
+      src="../../images/image-mockups.png" 
+      alt="mockups" 
+      title="mockups" 
+      class="lg:min-w-[700px] px-1 absolute -top-24 lg:top-44 lg:-right-40 max-[800px]:min-w-full max-[800px]:max-h-[60vh]"
+    />
+  </figure>
+</div>
+
+<style>
+  h2 {
+    text-wrap: balance;
+  }
+</style>

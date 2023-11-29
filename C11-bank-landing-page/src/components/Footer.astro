@@ -1,0 +1,69 @@
+---
+import Button from "./Button.astro";
+interface Social {
+  link: string;
+  imagen: string;
+  name: string;
+}
+
+const socials: Social[] = [
+  {
+    link: "www.facebook.com",
+    imagen: "../../images/icon-facebook.svg",
+    name: "icon-facebook"
+  },
+  {
+    link: "www.youtube.com",
+    imagen: "../../images/icon-youtube.svg",
+    name: "icon-youtube"
+  },
+  {
+    link: "www.twitter.com",
+    imagen: "../../images/icon-twitter.svg",
+    name: "icon-twitter"
+  },
+  {
+    link: "www.pinterest.com",
+    imagen: "../../images/icon-pinterest.svg",
+    name: "icon-pinterest"
+  },
+  {
+    link: "www.instagram.com",
+    imagen: "../../images/icon-instagram.svg",
+    name: "icon-instagram"
+  }
+]
+---
+
+<footer class="px-4 md:px-28 py-10 bg-DarkBlue flex flex-col lg:flex-row lg:justify-between gap-10">
+  <section class="gap-12 flex flex-col mx-auto lg:mx-0">
+    <figure>
+      <img src="../../images/logo-footer.svg" alt="Logo" title="Logo" />
+    </figure>
+
+    <aside class="flex gap-3">
+      {socials.map((social) => (
+        <a href={social.link}> 
+          <img src={social.imagen} alt={social.name} title={social.name} class="hover:text-LimeGreen transition-colors" />
+        </a>
+      ))}
+    </aside>
+  </section>
+
+  <section class="gap-2 flex flex-col text-LightGrayishBlue">
+    <p class="hover:text-LimeGreen transition-colors cursor-pointer mx-auto lg:mx-0">About</p>
+    <p class="hover:text-LimeGreen transition-colors cursor-pointer mx-auto lg:mx-0">Contact</p>
+    <p class="hover:text-LimeGreen transition-colors cursor-pointer mx-auto lg:mx-0">Blog</p>
+  </section>
+
+  <section class="gap-2 flex flex-col text-LightGrayishBlue">
+    <p class="hover:text-LimeGreen transition-colors cursor-pointer mx-auto lg:mx-0">Careers</p>
+    <p class="hover:text-LimeGreen transition-colors cursor-pointer mx-auto lg:mx-0">Support</p>
+    <p class="hover:text-LimeGreen transition-colors cursor-pointer mx-auto lg:mx-0">Privacy Policy</p>
+  </section>
+
+  <section class="flex flex-col gap-6 justify-center items-center lg:justify-end lg:items-end">
+    <Button title="Request Invite" className="px-8 w-fit" />
+    <span class="text-GrayishBlue">© Easybank. All Rights Reserved</span>
+  </section>
+</footer>

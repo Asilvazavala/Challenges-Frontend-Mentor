@@ -1,0 +1,12 @@
+---
+interface Props {
+	className: string;
+  title: string;
+}
+
+const { className, title } = Astro.props;
+---
+
+<button class={`${className} py-[0.62rem] bg-gradient-to-r from-LimeGreen to-BrightCyan rounded-full text-white hover:brightness-110 transition-all font-[400]`}>
+  {title}
+</button>
