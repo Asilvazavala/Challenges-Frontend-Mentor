@@ -1,10 +1,5 @@
 ---
 import Button from "./Button.astro";
-import { FaHome } from "react-icons/fa";
-import { IoPersonSharp } from "react-icons/io5";
-import { GrContact } from "react-icons/gr";
-import { BiNews } from "react-icons/bi";
-import { FaRegMoneyBill1 } from "react-icons/fa6";
 
 interface Route {
   name: string;
@@ -16,27 +11,27 @@ const routes: Route[] = [
   {
     name: 'Home',
     link: '/',
-    icon: '../../images/icon-budgeting.svg'
+    icon: '../../src/images/icon-budgeting.svg'
   },
   {
     name: 'About',
     link: '/',
-    icon: '../../images/icon-onboarding.svg'
+    icon: '../../src/images/icon-onboarding.svg'
   },
   {
     name: 'Contact',
     link: '/',
-    icon: '../../images/icon-online.svg'
+    icon: '../../src/images/icon-online.svg'
   },
   {
     name: 'Blog',
     link: '/',
-    icon: '../../images/icon-api.svg'
+    icon: '../../src/images/icon-api.svg'
   },
   {
     name: 'Careers',
     link: '/',
-    icon: '../../images/icon-budgeting.svg'
+    icon: '../../src/images/icon-budgeting.svg'
   },
 ];
 
@@ -44,7 +39,7 @@ const routes: Route[] = [
 
 <header class="flex justify-between items-center py-4 lg:py-0 px-4 md:px-28">
   <figure>
-    <img src="../../images/logo.svg" alt="Logo" title="Logo">
+    <img src="../../src/images/logo.svg" alt="Logo" title="Logo">
   </figure>
 
   <nav class="hidden lg:block">
@@ -59,7 +54,7 @@ const routes: Route[] = [
 
   <nav class="lg:hidden">    
     <img 
-      src="../../images/icon-hamburger.svg" 
+      src="../../src/images/icon-hamburger.svg" 
       alt="icon-hamburger" 
       title="icon-hamburger" 
       id="openMenuMobile"
@@ -68,7 +63,7 @@ const routes: Route[] = [
     />
     
     <img 
-      src="../../images/icon-close.svg" 
+      src="../../src/images/icon-close.svg" 
       alt="icon-close" 
       title="icon-close" 
       id="closeMenuMobile"
