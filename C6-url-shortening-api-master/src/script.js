@@ -92,12 +92,14 @@ inputLink.addEventListener("input", function () {
 function validateURL() {
   const URL = inputLink.value;
 
-  if (URL === '') {
+  if (URL.trim() === '') {
     showError('Invalid link');
     return;
-  } else {
-      cleanError()
-    }
+  } else if (!URL.startsWith('https://')) {
+      showError('Link must start with https://');
+    }  else {
+        cleanError()
+      }
 }
 
 btnGetShortLink.addEventListener('click', async () => {
