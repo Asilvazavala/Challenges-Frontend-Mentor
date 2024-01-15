@@ -136,7 +136,6 @@ btnGetShortLink.addEventListener('click', async () => {
     validateLengthLinkContainer();
 
     const shortLink = response.id;
-    const longLink = response.link;
     
     addShortLink(URL, shortLink);
     saveLink(URL, shortLink);

@@ -1,5 +1,5 @@
 interface FooterDataItem {
-  [section: string]: string[];
+  [section: string]: titlesProps[];
 }
 
 interface FooterDataProps {
@@ -12,47 +12,65 @@ interface iconsProps {
   link: string;
 }
 
+interface titlesProps {
+  name: string;
+  link: string;
+}
+
 export const footerData: FooterDataProps[] = [
   {
     titles: {
       Features: [
-        'Link Shortening',
-        'Branded Links',
-        'Analytics'
+        {
+          name: "Link Shortening",
+          link: "/#ShortLink",
+        },
+        {
+          name: "Branded Links",
+          link: "/",
+        },
+        {
+          name: "Analytics",
+          link: "/",
+        },
       ],
       Resources: [
-        'Blog',
-        'Developers',
-        'Support'
+        {
+          name: "Blog",
+          link: "/",
+        },
+        {
+          name: "Developers",
+          link: "/",
+        },
+        {
+          name: "Support",
+          link: "/",
+        },
       ],
-      Company: [
-        'About',
-        'Our Team',
-        'Contact'
-      ],
-    }
+    },
   },
 ];
 
 export const icons: iconsProps[] = [
   {
-    name: 'Facebook',
-    image: '/images/icon-facebook.svg',
-    link: 'https://facebook.com'
+    name: "Facebook",
+    image: "/images/icon-facebook.svg",
+    link: "https://facebook.com",
   },
   {
-    name: 'Twitter',
-    image: '/images/icon-twitter.svg',
-    link: 'https://twitter.com'
+    name: "Twitter",
+    image: "/images/icon-twitter.svg",
+    link: "https://twitter.com",
   },
   {
-    name: 'Pinterest',
-    image: '/images/icon-pinterest.svg',
-    link: 'https://pinterest.com'
+    name: "Pinterest",
+    image: "/images/icon-pinterest.svg",
+    link: "https://pinterest.com",
   },
   {
-    name: 'Instagram',
-    image: '/images/icon-instagram.svg',
-    link: 'https://instagram.com'
+    name: "Instagram",
+    image: "/images/icon-instagram.svg",
+    link: "https://instagram.com",
   },
-]
+];

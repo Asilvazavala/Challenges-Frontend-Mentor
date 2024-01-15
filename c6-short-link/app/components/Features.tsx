@@ -1,9 +1,25 @@
+'use client';
+
 import SectionContainer from "./Shared/SectionContainer";
+import ShorterLinksContainer from "./ShorterLinksContainer";
+import useShortenLinks from '../../hooks/useShortLinks';
 
 const Features = () => {
+  const { 
+    handleCopy, 
+    handleCleanHistory, 
+    shortenLinks, 
+  } = useShortenLinks();
+
   return (
     <SectionContainer className="bg-Gray pb-20">
-      <header id="features" className="max-w-md mx-auto mt-40">
+      <ShorterLinksContainer 
+        handleCopy={handleCopy}
+        handleCleanHistory={handleCleanHistory} 
+        shortenLinks={shortenLinks} 
+      />
+
+      <header id="features" className={`max-w-md mx-auto ${shortenLinks.length > 0 ? 'mt-20' : 'mt-40'}`}>
         <h3 className="text-center text-VeryDarkBlue font-bold text-[1.7rem] md:text-4xl">Advanced Statistics</h3>
         <p className="text-center text-gray-500 mt-3 mb-24">Track how your links are performing across the web with our 
           advanced statistics dashboard.</p>
