@@ -104,10 +104,26 @@ function validateURL() {
 
 btnGetShortLink.addEventListener('click', async () => {
   validateURL()
+
+  // const BITLY_ACCESS_TOKEN = process.env.BITLY_ACCESS_TOKEN;
   const URL = inputLink.value;
+  const headers = {
+    'Authorization': `Bearer ec0aca1079667c74094b27aaa9839e81a6981820`,
+    'Content-Type': 'application/json',
+  };
+  
+  const requestBody = {
+    long_url: URL,
+  };
+
+  const options = {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(requestBody),
+  };
 
   try {
-    const fetchAPI = await fetch(`https://api.shrtco.de/v2/shorten?url=${URL}`);
+    const fetchAPI = await fetch('https://api-ssl.bitly.com/v4/shorten', options);
     const response = await fetchAPI.json();
     
     if (response.ok === false) {
@@ -115,14 +131,18 @@ btnGetShortLink.addEventListener('click', async () => {
       return
     } 
 
+    console.log(response);
+    
     validateLengthLinkContainer();
 
-    const shortLink = response.result.full_short_link;
+    const shortLink = response.id;
+    const longLink = response.link;
+    
     addShortLink(URL, shortLink);
     saveLink(URL, shortLink);
     showHistoryButton();
   } catch (error) {
-      showError('Invalid link');
+      showError('Error al realizar la solicitud, intenta de nuevo');
       console.log(error);
     }
 })
@@ -147,9 +167,9 @@ function addShortLink(URL, link) {
   linkElement.target = '_blank'; 
 
   const shortLinkElement = document.createElement('a');
-  shortLinkElement.href = link;
-  shortLinkElement.classList.add('text-Cyan', 'mr-2');
+  shortLinkElement.href = `https://${link};`
   shortLinkElement.textContent = link;
+  shortLinkElement.classList.add('text-Cyan', 'mr-2');
   shortLinkElement.target = '_blank';
 
   const copyButton = document.createElement('button');
