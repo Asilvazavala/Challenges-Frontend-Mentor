@@ -27,11 +27,11 @@ export const footerData: FooterDataProps[] = [
         },
         {
           name: "Branded Links",
-          link: "/",
+          link: "/#features",
         },
         {
-          name: "Analytics",
-          link: "/",
+          name: "Pricing",
+          link: "/pricing",
         },
       ],
       Resources: [
