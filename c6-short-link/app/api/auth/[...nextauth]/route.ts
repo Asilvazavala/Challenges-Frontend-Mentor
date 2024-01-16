@@ -3,6 +3,11 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import db from "@/libs/db";
 import bcrypt from "bcrypt";
 
+interface Credentials {
+  email: string;
+  password: string;
+}
+
 export const authOptions = {
   secret: process.env.SECRET,
   providers: [
@@ -12,17 +17,21 @@ export const authOptions = {
         email: { label: "Email", type: "text", placeholder: "your@email.com" },
         password: { label: "Password", type: "password", placeholder: "*****" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials: Credentials, req: any) {
+        if (!credentials) {
+          throw new Error("Credentials not provided");
+        }
+
         const userFound = await db.user.findUnique({
           where: {
-            email: credentials?.email,
+            email: credentials.email,
           },
         });
 
         if (!userFound) throw new Error("No user found");
 
         const matchPassword = await bcrypt.compare(
-          credentials?.password,
+          credentials.password || "",
           userFound.password
         );
 
