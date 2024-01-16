@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { BitlyResponse, ShortenLink } from '../types/types';
+import { useState } from "react";
+import { BitlyResponse, ShortenLink } from "../types/types";
 
-export default function useShortenLinks () {
-  const [inputValue, setInputValue] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>('');
+export default function useShortenLinks() {
+  const [inputValue, setInputValue] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [shortenLinks, setShortenLinks] = useState<ShortenLink[]>([]);
 
   const validateURL = () => {
     const URL = inputValue.trim();
 
-    if (URL === '') {
-      setErrorMessage('Invalid link');
+    if (URL === "") {
+      setErrorMessage("Invalid link");
       return true;
-    } else if (!URL.startsWith('https://')) {
-        setErrorMessage('Link must start with https://');
-        return true;
-      } 
+    } else if (!URL.startsWith("https://")) {
+      setErrorMessage("Link must start with https://");
+      return true;
+    }
   };
 
   const validateLengthLinks = () => {
     if (shortenLinks.length >= 5) {
       const newShortenLinks = [...shortenLinks];
-      newShortenLinks.shift();  
+      newShortenLinks.shift();
       setShortenLinks(newShortenLinks);
     }
   };
@@ -34,8 +34,8 @@ export default function useShortenLinks () {
     newShortenLinks.push({
       link: link,
       shortLink: shortLink,
-      copied: false
-    });  
+      copied: false,
+    });
 
     setShortenLinks(newShortenLinks);
   };
@@ -43,11 +43,11 @@ export default function useShortenLinks () {
   const handleGetShortLink = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     validateURL();
-  
+
     const URL = inputValue.trim();
     const headers = {
-      'Authorization': 'Bearer ec0aca1079667c74094b27aaa9839e81a6981820',
-      'Content-Type': 'application/json',
+      Authorization: "Bearer ec0aca1079667c74094b27aaa9839e81a6981820",
+      "Content-Type": "application/json",
     };
 
     const requestBody = {
@@ -55,28 +55,30 @@ export default function useShortenLinks () {
     };
 
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: headers,
       body: JSON.stringify(requestBody),
     };
 
     try {
-      const fetchAPI = await fetch('https://api-ssl.bitly.com/v4/shorten', options);
+      const fetchAPI = await fetch(
+        "https://api-ssl.bitly.com/v4/shorten",
+        options
+      );
       const response: BitlyResponse = await fetchAPI.json();
-      
+
       if (response.id) {
-        setErrorMessage('');
+        setErrorMessage("");
         validateLengthLinks();
 
         const shortLink = response.id;
         addShortLink(URL, shortLink);
         // saveLink(URL, shortLink);
       } else {
-          return;
-        }
-
+        return;
+      }
     } catch (error) {
-      setErrorMessage('Error al realizar la solicitud, intenta de nuevo');
+      setErrorMessage("Error al realizar la solicitud, intenta de nuevo");
       console.log(error);
     }
   };
@@ -84,19 +86,22 @@ export default function useShortenLinks () {
   const handleCopy = (index: number) => {
     const linkToCopy = shortenLinks[index].shortLink;
 
-    navigator.clipboard.writeText(linkToCopy).then(() => {
-      const newShortenLinks = [...shortenLinks];
-      newShortenLinks[index].copied = true;
-      setShortenLinks(newShortenLinks);
-    }).catch((error) => {
-      console.error('No se pudo copiar al portapapeles: ', error);
-    });
+    navigator.clipboard
+      .writeText(linkToCopy)
+      .then(() => {
+        const newShortenLinks = [...shortenLinks];
+        newShortenLinks[index].copied = true;
+        setShortenLinks(newShortenLinks);
+      })
+      .catch((error) => {
+        console.error("No se pudo copiar al portapapeles: ", error);
+      });
   };
 
   const handleCleanHistory = () => {
     setShortenLinks([]);
   };
-  
+
   return {
     handleGetShortLink,
     handleCopy,
@@ -104,6 +109,6 @@ export default function useShortenLinks () {
     shortenLinks,
     inputValue,
     setInputValue,
-    errorMessage
-  }
+    errorMessage,
+  };
 }

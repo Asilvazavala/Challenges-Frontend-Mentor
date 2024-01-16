@@ -9,7 +9,7 @@ const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
   shortenLinks,
 }) => {
   return (
-    <footer className="mt-24">
+    <footer className="pt-28">
       {shortenLinks.map(({ link, shortLink, copied }, index) => (
         <article
           key={index}

@@ -18,7 +18,7 @@ const ShorterLink = () => {
         Short your links
       </h3>
       <SectionContainer>
-        <main className="relative bg-DarkViolet rounded-lg -mb-20 lg:-mb-[4.5rem] z-40 p-5 lg:p-12">
+        <main className="relative bg-DarkViolet rounded-lg -mb-20 lg:-mb-[5rem] z-40 p-5 lg:p-12">
           <article
             className="flex flex-col gap-x-4 justify-center 
           items-center gap-y-6 lg:flex-row lg:gap-y-0"
