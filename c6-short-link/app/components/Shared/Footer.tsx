@@ -10,14 +10,14 @@ const Footer = () => {
       className="bg-VeryDarkViolet text-white py-14 flex justify-center items-center 
     flex-col gap-y-10 lg:flex-row lg:justify-between lg:items-start lg:gap-x-4"
     >
-      <picture className="">
+      <Link href="/">
         <Image
           src="/images/logoWhite.svg"
           alt="Logo"
           width={120}
           height={120}
         />
-      </picture>
+      </Link>
 
       {footerData.map(({ titles }, index) => (
         <aside
