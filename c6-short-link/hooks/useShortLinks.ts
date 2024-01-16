@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { BitlyResponse, ShortenLink } from "../types/types";
+import { ShortenLink } from "../types/types";
 
 export default function useShortenLinks() {
   const [inputValue, setInputValue] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [shortenLinks, setShortenLinks] = useState<ShortenLink[]>([]);
 
   const validateURL = () => {
@@ -13,10 +14,10 @@ export default function useShortenLinks() {
 
     if (URL === "") {
       setErrorMessage("Invalid link");
-      return true;
+      return false;
     } else if (!URL.startsWith("https://")) {
       setErrorMessage("Link must start with https://");
-      return true;
+      return false;
     }
   };
 
@@ -29,50 +30,34 @@ export default function useShortenLinks() {
   };
 
   const addShortLink = (link: string, shortLink: string) => {
-    const newShortenLinks = [...shortenLinks];
-
-    newShortenLinks.push({
-      link: link,
+    const newData = {
+      link,
       shortLink: shortLink,
       copied: false,
-    });
+    };
 
-    setShortenLinks(newShortenLinks);
+    setShortenLinks((prevLinks) => [...prevLinks, newData]);
   };
 
   const handleGetShortLink = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     validateURL();
 
-    const URL = inputValue.trim();
-    const headers = {
-      Authorization: "Bearer ec0aca1079667c74094b27aaa9839e81a6981820",
-      "Content-Type": "application/json",
-    };
-
-    const requestBody = {
-      long_url: URL,
-    };
-
-    const options = {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(requestBody),
-    };
+    const longLink = inputValue.trim();
 
     try {
+      setIsLoading(true);
       const fetchAPI = await fetch(
-        "https://api-ssl.bitly.com/v4/shorten",
-        options
+        `https://tinyurl.com/api-create.php?url=${longLink}`
       );
-      const response: BitlyResponse = await fetchAPI.json();
 
-      if (response.id) {
+      const response = await fetchAPI.text();
+
+      if (response !== "Error") {
         setErrorMessage("");
         validateLengthLinks();
 
-        const shortLink = response.id;
-        addShortLink(URL, shortLink);
+        addShortLink(longLink, response);
         // saveLink(URL, shortLink);
       } else {
         return;
@@ -80,6 +65,8 @@ export default function useShortenLinks() {
     } catch (error) {
       setErrorMessage("Error al realizar la solicitud, intenta de nuevo");
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

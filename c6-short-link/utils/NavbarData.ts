@@ -17,7 +17,7 @@ export const navbarLinks: navbarLinksProps[] = [
   },
   {
     title: "Resources",
-    link: "/#resources",
+    link: "/#features",
     icon: "/imagenes/Navbar/ProjectsIcon.svg",
   },
 ];
