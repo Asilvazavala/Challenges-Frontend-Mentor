@@ -35,7 +35,7 @@ const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
             md:w-auto md:justify-center md:flex-row md:items-center md:gap-6"
           >
             <Link
-              href={`https://${shortLink}`}
+              href={`${shortLink}`}
               className="text-DarkViolet"
               target="_blank"
               rel="noopener"
