@@ -1,16 +1,18 @@
+"use client";
+
 import { navbarLinks } from "../../../utils/NavbarData";
 import Image from "next/image";
 import Link from "next/link";
 import SectionContainer from "./SectionContainer";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useState } from "react";
 
-async function Navbar() {
-  const session = await getServerSession(authOptions);
+function Navbar() {
+  const { data: session, status } = useSession();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <SectionContainer>
-      <p></p>
       <nav className="hidden justify-between pt-6 lg:flex">
         <ul className="flex gap-x-8 justify-center items-center">
           <Link href="/">

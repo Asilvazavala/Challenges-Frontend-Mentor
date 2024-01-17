@@ -3,8 +3,10 @@ import "./globals.css";
 import { poppins } from "../fonts";
 import Navbar from "./components/Shared/Navbar";
 import Footer from "./components/Shared/Footer";
+
 import { LinksProvider } from "@/context/LinksContext";
 import ToastProvider from "@/providers/toastProvider";
+import SessionAuthProvider from "@/context/SessionAuthProvider";
 
 export const metadata: Metadata = {
   title: "Shorter URL | Antonio Silva",
@@ -22,12 +24,14 @@ export default function RootLayout({
         className={`${poppins.className} overflow-x-hidden flex flex-col justify-center 
       items-center w-full`}
       >
-        <LinksProvider>
-          <ToastProvider />
-          <Navbar />
-          {children}
-          <Footer />
-        </LinksProvider>
+        <SessionAuthProvider>
+          <LinksProvider>
+            <ToastProvider />
+            <Navbar />
+            {children}
+            <Footer />
+          </LinksProvider>
+        </SessionAuthProvider>
       </body>
     </html>
   );
