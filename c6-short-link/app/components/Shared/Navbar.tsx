@@ -112,13 +112,13 @@ function Navbar() {
               text-white bg-DarkViolet w-[90%] p-6 rounded-lg transition duration-700 delay-0
               ${isMenuOpen ? "scale-100" : "scale-0"} absolute left-4 top-14`}
           >
-            {navbarLinks.map(({ title, link, icon }) => (
+            {navbarLinks.map(({ title, link, icon, needsAuthentication }) => (
               <li
                 key={title}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => handleNavigation(link, needsAuthentication)}
                 className="text-white lg:hover:text-VeryDarkBlue transition-colors"
               >
-                <Link href={link}>{title}</Link>
+                <span onClick={() => setIsMenuOpen(false)}>{title}</span>
               </li>
             ))}
             <hr className="border-GrayishViolet w-full"></hr>
