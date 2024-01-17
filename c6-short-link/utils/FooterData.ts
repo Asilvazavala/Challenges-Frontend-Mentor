@@ -54,23 +54,18 @@ export const footerData: FooterDataProps[] = [
 
 export const icons: iconsProps[] = [
   {
-    name: "Facebook",
-    image: "/images/icon-facebook.svg",
-    link: "https://facebook.com",
+    name: "Portfolio",
+    image: "/images/icon-portfolio.svg",
+    link: "https://as-work.vercel.app/",
   },
   {
-    name: "Twitter",
-    image: "/images/icon-twitter.svg",
-    link: "https://twitter.com",
+    name: "Linkedin",
+    image: "/images/icon-linkedin.svg",
+    link: "https://www.linkedin.com/in/antonio-silva-developer/",
   },
   {
-    name: "Pinterest",
-    image: "/images/icon-pinterest.svg",
-    link: "https://pinterest.com",
-  },
-  {
-    name: "Instagram",
-    image: "/images/icon-instagram.svg",
-    link: "https://instagram.com",
+    name: "Github",
+    image: "/images/icon-github.svg",
+    link: "https://github.com/Asilvazavala",
   },
 ];

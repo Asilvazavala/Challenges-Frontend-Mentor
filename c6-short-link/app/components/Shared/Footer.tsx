@@ -41,19 +41,31 @@ const Footer = () => {
         </aside>
       ))}
 
-      <aside className="flex gap-x-6">
-        {icons.map(({ name, image, link }) => (
-          <Link key={name} href={link} target="_blank" rel="noopener">
-            <Image
-              className="cursor-pointer w-6 h-6 hover:lg:scale-125 transition"
-              src={image}
-              alt={name}
-              width={50}
-              height={50}
-            />
+      <div className="flex flex-col gap-2">
+        <aside className="flex gap-x-6">
+          {icons.map(({ name, image, link }) => (
+            <Link key={name} href={link} target="_blank" rel="noopener">
+              <Image
+                className="cursor-pointer w-9 h-9 hover:lg:scale-125 transition"
+                src={image}
+                alt={name}
+                width={50}
+                height={50}
+              />
+            </Link>
+          ))}
+        </aside>
+        <span className="text-GrayishViolet text-center">
+          Made by{" "}
+          <Link
+            href="https://as-work.vercel.app/"
+            target="_blank"
+            className="underline lg:hover:text-gray-500 transition"
+          >
+            Antonio Silva
           </Link>
-        ))}
-      </aside>
+        </span>
+      </div>
     </SectionContainer>
   );
 };
