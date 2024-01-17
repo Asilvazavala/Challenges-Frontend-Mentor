@@ -99,13 +99,24 @@ async function Navbar() {
               </li>
             ))}
             <hr className="border-GrayishViolet w-full"></hr>
-            <Link href="/auth/login">Log in</Link>
-            <Link
-              href="/auth/register"
-              className="font-bold bg-Cyan rounded-full w-full py-2 text-center"
-            >
-              Sign up
-            </Link>
+            {!session?.user ? (
+              <>
+                <Link href="/auth/login">Log in</Link>
+                <Link
+                  href="/auth/register"
+                  className="font-bold bg-Cyan rounded-full w-full py-2 text-center"
+                >
+                  Sign up
+                </Link>
+              </>
+            ) : (
+              <Link
+                href="/api/auth/signout"
+                className="font-bold bg-Cyan rounded-full w-full py-2 text-center"
+              >
+                Log out
+              </Link>
+            )}
           </ul>
         </label>
       </nav>

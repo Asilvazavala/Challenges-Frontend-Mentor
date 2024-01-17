@@ -3,9 +3,11 @@
 import SectionContainer from "./Shared/SectionContainer";
 import ShorterLinksContainer from "./ShorterLinksContainer";
 import useShortenLinks from "../../hooks/useShortLinks";
+import { useLinks } from "../../context/LinksContext";
 
 const Features = () => {
-  const { handleCopy, handleCleanHistory, shortenLinks } = useShortenLinks();
+  const { shortenLinks, isLoading } = useLinks();
+  const { handleCopy, handleCleanHistory } = useShortenLinks();
 
   return (
     <SectionContainer className="bg-Gray pb-20">
@@ -13,6 +15,7 @@ const Features = () => {
         handleCopy={handleCopy}
         handleCleanHistory={handleCleanHistory}
         shortenLinks={shortenLinks}
+        isLoading={isLoading}
       />
 
       <header id="features" className="max-w-md mx-auto pt-20">

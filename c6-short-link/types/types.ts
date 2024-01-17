@@ -8,4 +8,5 @@ export interface ShorterLinksContainer {
   handleCopy: (index: number) => void;
   handleCleanHistory: () => void;
   shortenLinks: ShortenLink[];
+  isLoading?: boolean;
 }

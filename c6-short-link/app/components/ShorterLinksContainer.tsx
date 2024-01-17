@@ -2,14 +2,18 @@
 
 import Link from "next/link";
 import { ShorterLinksContainer } from "../../types/types";
+import Loading from "./Loading";
 
 const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
   handleCopy,
   handleCleanHistory,
   shortenLinks,
+  isLoading,
 }) => {
   return (
     <footer className="pt-28">
+      {isLoading && <Loading />}
+
       {shortenLinks.map(({ link, shortLink, copied }, index) => (
         <article
           key={index}

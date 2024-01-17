@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { ShortenLink } from "../types/types";
+import { useLinks } from "../context/LinksContext";
 
 export default function useShortenLinks() {
+  const { shortenLinks, setShortenLinks, setIsLoading } = useLinks();
   const [inputValue, setInputValue] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [shortenLinks, setShortenLinks] = useState<ShortenLink[]>([]);
 
   const validateURL = () => {
     const URL = inputValue.trim();
@@ -93,7 +92,6 @@ export default function useShortenLinks() {
     handleGetShortLink,
     handleCopy,
     handleCleanHistory,
-    shortenLinks,
     inputValue,
     setInputValue,
     errorMessage,
