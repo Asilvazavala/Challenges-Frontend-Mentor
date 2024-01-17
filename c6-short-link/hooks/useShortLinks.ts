@@ -63,6 +63,7 @@ export default function useShortenLinks() {
       return notifyWarning("Maximum 5 links to shorten on free plan");
     } else {
       setShortenLinks((prevLinks) => [...prevLinks, newData]);
+      setInputValue("");
     }
   };
 
