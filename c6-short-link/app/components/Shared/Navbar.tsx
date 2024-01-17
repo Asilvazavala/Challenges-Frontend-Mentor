@@ -6,10 +6,25 @@ import Link from "next/link";
 import SectionContainer from "./SectionContainer";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useNotifications } from "../../../hooks/useNotifications";
 
 function Navbar() {
   const { data: session, status } = useSession();
+  const { notifyWarning } = useNotifications();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const router = useRouter();
+
+  const handleNavigation = (link: string, needsAuthentication: boolean) => {
+    if (needsAuthentication && status === "unauthenticated") {
+      notifyWarning("Needs log in to enter dashboard");
+      router.push("/auth/login");
+    } else {
+      router.push(link);
+    }
+  };
 
   return (
     <SectionContainer>
@@ -26,12 +41,13 @@ function Navbar() {
             />
           </Link>
 
-          {navbarLinks.map(({ title, link, icon }) => (
+          {navbarLinks.map(({ title, link, icon, needsAuthentication }) => (
             <li
               key={title}
-              className="text-GrayishViolet lg:hover:text-VeryDarkBlue transition-colors"
+              onClick={() => handleNavigation(link, needsAuthentication)}
+              className="text-GrayishViolet lg:hover:text-VeryDarkBlue transition-colors cursor-pointer"
             >
-              <Link href={link}>{title}</Link>
+              {title}
             </li>
           ))}
         </ul>

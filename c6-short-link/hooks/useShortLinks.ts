@@ -120,13 +120,12 @@ export default function useShortenLinks() {
   };
 
   useEffect(() => {
-    if (status === "authenticated") {
-      const savedLinks = JSON.parse(localStorage.getItem("shortLinks") || "[]");
+    setShortenLinks([]);
+    const savedLinks = JSON.parse(localStorage.getItem("shortLinks") || "[]");
 
-      savedLinks.forEach((linkData: LinkData) => {
-        addShortLink(linkData.originalURL, linkData.shortLink);
-      });
-    }
+    savedLinks.forEach((linkData: LinkData) => {
+      addShortLink(linkData.originalURL, linkData.shortLink);
+    });
   }, [status]);
 
   return {

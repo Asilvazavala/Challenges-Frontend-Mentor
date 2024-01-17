@@ -36,8 +36,8 @@ export const footerData: FooterDataProps[] = [
       ],
       Resources: [
         {
-          name: "Blog",
-          link: "/",
+          name: "Dashboard",
+          link: "/dashboard",
         },
         {
           name: "Developers",
