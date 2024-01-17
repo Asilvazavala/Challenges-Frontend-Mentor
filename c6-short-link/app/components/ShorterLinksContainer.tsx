@@ -17,7 +17,7 @@ const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
       {shortenLinks.map(({ link, shortLink, copied }, index) => (
         <article
           key={index}
-          className="flex flex-col justify-between gap-2 
+          className="flex flex-col justify-between gap-6  
         bg-white p-4 mb-4 rounded-md md:flex-row md:items-center lg:p-6"
         >
           <Link
@@ -26,12 +26,13 @@ const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
             target="_blank"
             rel="noopener"
           >
+            <span className="text-gray-400">Your URL: </span>
             {link}
           </Link>
 
           <aside
-            className="flex w-full items-center gap-6 bg-white 
-            md:w-auto md:justify-center"
+            className="flex flex-col w-full items-start justify-end gap-2 bg-white 
+            md:w-auto md:justify-center md:flex-row md:items-center md:gap-6"
           >
             <Link
               href={`https://${shortLink}`}
@@ -39,6 +40,7 @@ const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
               target="_blank"
               rel="noopener"
             >
+              <span className="text-gray-400">Shorten URL: </span>
               {shortLink}
             </Link>
             <button
