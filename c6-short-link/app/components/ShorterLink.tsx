@@ -13,7 +13,7 @@ const ShorterLink = () => {
     <>
       <h3
         id="ShortLink"
-        className="text-center text-VeryDarkBlue font-bold text-4xl mt-12 pb-4 lg:mt-0"
+        className="text-center text-VeryDarkBlue font-bold text-[1.7rem] md:text-4xl mt-12 pb-4 lg:mt-0"
       >
         Shorten your links here
       </h3>
@@ -34,7 +34,7 @@ const ShorterLink = () => {
               <input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                className="w-full py-3 px-6 rounded-lg md:text-xl focus:outline-Cyan"
+                className="w-full py-3 px-6 rounded-lg text-sm md:text-xl focus:outline-Cyan"
                 type="text"
                 placeholder="https://as-work.vercel.app"
               />
