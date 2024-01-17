@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { LinkData } from "../types/types";
 
 import { useLinks } from "../context/LinksContext";
 import { useNotifications } from "../hooks/useNotifications";
@@ -26,6 +27,19 @@ export default function useShortenLinks() {
     }
   };
 
+  const saveLink = (originalURL: string, shortLink: string) => {
+    if (status === "authenticated") {
+      const savedLinks = JSON.parse(localStorage.getItem("shortLinks") || "[]");
+
+      if (savedLinks.length >= 5) {
+        savedLinks.shift();
+      }
+
+      savedLinks.push({ originalURL, shortLink });
+      localStorage.setItem("shortLinks", JSON.stringify(savedLinks));
+    }
+  };
+
   const validateLengthLinks = () => {
     if (shortenLinks.length >= 5) {
       const newShortenLinks = [...shortenLinks];
@@ -45,7 +59,11 @@ export default function useShortenLinks() {
       copied: false,
     };
 
-    setShortenLinks((prevLinks) => [...prevLinks, newData]);
+    if (shortenLinks.length > 5) {
+      return notifyWarning("Maximum 5 links to shorten on free plan");
+    } else {
+      setShortenLinks((prevLinks) => [...prevLinks, newData]);
+    }
   };
 
   const handleGetShortLink = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -67,7 +85,7 @@ export default function useShortenLinks() {
         validateLengthLinks();
 
         addShortLink(longLink, response);
-        // saveLink(URL, shortLink);
+        saveLink(longLink, response);
       } else {
         return;
       }
@@ -96,8 +114,19 @@ export default function useShortenLinks() {
   };
 
   const handleCleanHistory = () => {
+    localStorage.removeItem("shortLinks");
     setShortenLinks([]);
   };
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      const savedLinks = JSON.parse(localStorage.getItem("shortLinks") || "[]");
+
+      savedLinks.forEach((linkData: LinkData) => {
+        addShortLink(linkData.originalURL, linkData.shortLink);
+      });
+    }
+  }, [status]);
 
   return {
     handleGetShortLink,

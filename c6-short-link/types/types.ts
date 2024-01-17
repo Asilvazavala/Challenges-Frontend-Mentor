@@ -10,3 +10,8 @@ export interface ShorterLinksContainer {
   shortenLinks: ShortenLink[];
   isLoading?: boolean;
 }
+
+export interface LinkData {
+  originalURL: string;
+  shortLink: string;
+}
