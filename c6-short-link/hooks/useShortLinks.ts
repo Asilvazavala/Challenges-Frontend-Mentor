@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { useLinks } from "../context/LinksContext";
+import { useNotifications } from "../hooks/useNotifications";
 
 export default function useShortenLinks() {
+  const { notifySucess } = useNotifications();
   const { shortenLinks, setShortenLinks, setIsLoading } = useLinks();
   const [inputValue, setInputValue] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -78,6 +80,7 @@ export default function useShortenLinks() {
         const newShortenLinks = [...shortenLinks];
         newShortenLinks[index].copied = true;
         setShortenLinks(newShortenLinks);
+        notifySucess("Link copied to cliboard 😀");
       })
       .catch((error) => {
         console.error("No se pudo copiar al portapapeles: ", error);

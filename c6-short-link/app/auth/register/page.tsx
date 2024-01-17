@@ -3,9 +3,12 @@
 import SectionContainer from "@/app/components/Shared/SectionContainer";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useNotifications } from "../../../hooks/useNotifications";
 
 const RegisterPage = () => {
   const router = useRouter();
+
+  const { notifySucess, notifyWarning } = useNotifications();
 
   const {
     register,
@@ -15,7 +18,7 @@ const RegisterPage = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     if (data.password !== data.confirmPassword) {
-      return alert("Passwords do not match");
+      return notifyWarning("Passwords do not match");
     }
 
     const res = await fetch("/api/auth/register", {
@@ -31,7 +34,12 @@ const RegisterPage = () => {
     });
 
     if (res.ok) {
+      notifySucess("User created successfully");
       router.push("/auth/login");
+    } else if (res.status === 401) {
+      notifyWarning("Email already exists, try with another");
+    } else {
+      notifyWarning("Username already exists, try with another");
     }
   });
 

@@ -4,6 +4,7 @@ import { poppins } from "../fonts";
 import Navbar from "./components/Shared/Navbar";
 import Footer from "./components/Shared/Footer";
 import { LinksProvider } from "@/context/LinksContext";
+import ToastProvider from "@/providers/toastProvider";
 
 export const metadata: Metadata = {
   title: "Shorter URL | Antonio Silva",
@@ -22,6 +23,7 @@ export default function RootLayout({
       items-center w-full`}
       >
         <LinksProvider>
+          <ToastProvider />
           <Navbar />
           {children}
           <Footer />

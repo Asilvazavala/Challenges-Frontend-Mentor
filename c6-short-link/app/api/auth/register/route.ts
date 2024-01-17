@@ -18,7 +18,7 @@ export async function POST(request: any) {
           message: "Email already exists",
         },
         {
-          status: 400,
+          status: 401,
         }
       );
     }

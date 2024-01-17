@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useNotifications } from "../../../hooks/useNotifications";
 
 const LoginPage = () => {
   const router = useRouter();
+
+  const { notifySucess, notifyWarning } = useNotifications();
 
   const [error, setError] = useState("");
 
@@ -25,8 +28,9 @@ const LoginPage = () => {
     });
 
     if (res?.error) {
-      setError(res.error);
+      notifyWarning(`${res.error}`);
     } else {
+      notifySucess("Successful login");
       router.push("/");
       router.refresh();
     }
