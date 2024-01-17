@@ -4,7 +4,7 @@ import { navbarLinks } from "../../../utils/NavbarData";
 import Image from "next/image";
 import Link from "next/link";
 import SectionContainer from "./SectionContainer";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 function Navbar() {
@@ -68,33 +68,38 @@ function Navbar() {
           <Image src="/images/logo.svg" alt="logo" width={120} height={120} />
         </Link>
 
-        <label htmlFor="menuMobile">
-          <input type="checkbox" id="menuMobile" className="hidden peer" />
-          <Image
-            src="/svg/menu-mobile.svg"
-            alt="menu"
-            width={30}
-            height={30}
-            className="peer-checked:scale-0 transition duration-500 delay-100 peer-checked:delay-0
-              absolute top-4 right-4 "
-          />
-          <Image
-            src="/svg/close-button.svg"
-            alt="menu"
-            width={30}
-            height={30}
-            className="scale-0 transition duration-500 delay-0 peer-checked:delay-100 
-              absolute top-4 right-4 peer-checked:scale-100"
-          />
-
+        <Image
+          src="/svg/menu-mobile.svg"
+          alt="menu"
+          width={30}
+          height={30}
+          onClick={() => setIsMenuOpen(true)}
+          className={`transition duration-500 delay-100
+              absolute top-4 right-4 ${
+                isMenuOpen ? "scale-0 delay-0" : "scale-100"
+              }`}
+        />
+        <Image
+          src="/svg/close-button.svg"
+          alt="menu"
+          width={30}
+          height={30}
+          onClick={() => setIsMenuOpen(false)}
+          className={`transition duration-500 delay-0 
+              absolute top-4 right-4  ${
+                isMenuOpen ? "scale-100 delay-100" : "scale-0"
+              }`}
+        />
+        {isMenuOpen && (
           <ul
             className={`lg:hidden flex flex-col justify-center items-center gap-y-4 
-              text-white bg-DarkViolet w-[90%] p-6 rounded-lg transition duration-500 scale-0 
-              peer-checked:scale-100 absolute left-4 top-14`}
+              text-white bg-DarkViolet w-[90%] p-6 rounded-lg transition duration-700 delay-0
+              ${isMenuOpen ? "scale-100" : "scale-0"} absolute left-4 top-14`}
           >
             {navbarLinks.map(({ title, link, icon }) => (
               <li
                 key={title}
+                onClick={() => setIsMenuOpen(false)}
                 className="text-white lg:hover:text-VeryDarkBlue transition-colors"
               >
                 <Link href={link}>{title}</Link>
@@ -103,8 +108,11 @@ function Navbar() {
             <hr className="border-GrayishViolet w-full"></hr>
             {!session?.user ? (
               <>
-                <Link href="/auth/login">Log in</Link>
+                <Link onClick={() => setIsMenuOpen(false)} href="/auth/login">
+                  Log in
+                </Link>
                 <Link
+                  onClick={() => setIsMenuOpen(false)}
                   href="/auth/register"
                   className="font-bold bg-Cyan rounded-full w-full py-2 text-center"
                 >
@@ -113,6 +121,7 @@ function Navbar() {
               </>
             ) : (
               <Link
+                onClick={() => setIsMenuOpen(false)}
                 href="/api/auth/signout"
                 className="font-bold bg-Cyan rounded-full w-full py-2 text-center"
               >
@@ -120,7 +129,7 @@ function Navbar() {
               </Link>
             )}
           </ul>
-        </label>
+        )}
       </nav>
     </SectionContainer>
   );

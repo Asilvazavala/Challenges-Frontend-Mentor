@@ -1,12 +1,16 @@
 "use client";
 
 import { useState } from "react";
+
 import { useLinks } from "../context/LinksContext";
 import { useNotifications } from "../hooks/useNotifications";
+import { useSession } from "next-auth/react";
 
 export default function useShortenLinks() {
-  const { notifySucess } = useNotifications();
+  const { notifySucess, notifyWarning } = useNotifications();
   const { shortenLinks, setShortenLinks, setIsLoading } = useLinks();
+  const { data: session, status } = useSession();
+
   const [inputValue, setInputValue] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -31,6 +35,10 @@ export default function useShortenLinks() {
   };
 
   const addShortLink = (link: string, shortLink: string) => {
+    if (status === "unauthenticated" && shortenLinks.length >= 2) {
+      return notifyWarning("Have to log in to shorten more links");
+    }
+
     const newData = {
       link,
       shortLink: shortLink,

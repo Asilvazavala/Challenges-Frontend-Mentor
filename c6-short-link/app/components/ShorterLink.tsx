@@ -15,7 +15,7 @@ const ShorterLink = () => {
         id="ShortLink"
         className="text-center text-VeryDarkBlue font-bold text-4xl mt-12 pb-4 lg:mt-0"
       >
-        Short your links
+        Shorten your links here
       </h3>
       <SectionContainer>
         <main className="relative bg-DarkViolet rounded-lg -mb-20 lg:-mb-[5rem] z-40 p-5 lg:p-12">
@@ -36,7 +36,7 @@ const ShorterLink = () => {
                 onChange={(e) => setInputValue(e.target.value)}
                 className="w-full py-3 px-6 rounded-lg md:text-xl focus:outline-Cyan"
                 type="text"
-                placeholder="Shorten a link here..."
+                placeholder="https://as-work.vercel.app"
               />
               <span className="text-Red absolute -bottom-6 lg:-bottom-7 italic">
                 {errorMessage}
