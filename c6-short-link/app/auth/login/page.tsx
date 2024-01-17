@@ -59,8 +59,10 @@ const LoginPage = () => {
             className="p-3 rounded mb-2 bg-Gray text-VeryDarkBlue w-full"
             placeholder="youremail@mail.com"
           />
-          {errors.email && (
-            <span className="text-red-500 text-xs">{errors.email.message}</span>
+          {errors.email && errors.email.message && (
+            <span className="text-red-500 text-xs">
+              {errors.email.message as React.ReactNode}
+            </span>
           )}
         </label>
 
@@ -77,9 +79,9 @@ const LoginPage = () => {
             className="p-3 rounded mb-2 bg-Gray text-VeryDarkBlue w-full"
             placeholder="********"
           />
-          {errors.password && (
+          {errors.password && errors.password.message && (
             <span className="text-red-500 text-xs">
-              {errors.password.message}
+              {errors.password.message as React.ReactNode}
             </span>
           )}
         </label>

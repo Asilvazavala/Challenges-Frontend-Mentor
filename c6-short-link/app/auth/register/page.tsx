@@ -61,9 +61,9 @@ const RegisterPage = () => {
             className="p-3 rounded mb-2 bg-Gray text-VeryDarkBlue w-full"
             placeholder="Username123"
           />
-          {errors.username && (
+          {errors.username && errors.username.message && (
             <span className="text-red-500 text-xs">
-              {errors.username.message}
+              {errors.username.message as React.ReactNode}
             </span>
           )}
         </label>
@@ -81,8 +81,10 @@ const RegisterPage = () => {
             className="p-3 rounded mb-2 bg-Gray text-VeryDarkBlue w-full"
             placeholder="youremail@mail.com"
           />
-          {errors.email && (
-            <span className="text-red-500 text-xs">{errors.email.message}</span>
+          {errors.email && errors.email.message && (
+            <span className="text-red-500 text-xs">
+              {errors.email.message as React.ReactNode}
+            </span>
           )}
         </label>
 
@@ -99,9 +101,9 @@ const RegisterPage = () => {
             className="p-3 rounded mb-2 bg-Gray text-VeryDarkBlue w-full"
             placeholder="********"
           />
-          {errors.password && (
+          {errors.password && errors.password.message && (
             <span className="text-red-500 text-xs">
-              {errors.password.message}
+              {errors.password.message as React.ReactNode}
             </span>
           )}
         </label>
@@ -119,9 +121,9 @@ const RegisterPage = () => {
             className="p-3 rounded mb-2 bg-Gray text-VeryDarkBlue w-full"
             placeholder="********"
           />
-          {errors.confirmPassword && (
+          {errors.confirmPassword && errors.confirmPassword.message && (
             <span className="text-red-500 text-xs">
-              {errors.confirmPassword.message}
+              {errors.confirmPassword.message as React.ReactNode}
             </span>
           )}
         </label>
