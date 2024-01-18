@@ -119,14 +119,14 @@ export default function useShortenLinks() {
     setShortenLinks([]);
   };
 
-  // useEffect(() => {
-  //   setShortenLinks([]);
-  //   const savedLinks = JSON.parse(localStorage.getItem("shortLinks") || "[]");
+  useEffect(() => {
+    setShortenLinks([]);
+    const savedLinks = JSON.parse(localStorage.getItem("shortLinks") || "[]");
 
-  //   savedLinks.forEach((linkData: LinkData) => {
-  //     addShortLink(linkData.originalURL, linkData.shortLink);
-  //   });
-  // }, [status]);
+    savedLinks.forEach((linkData: LinkData) => {
+      addShortLink(linkData.originalURL, linkData.shortLink);
+    });
+  }, [status]);
 
   return {
     handleGetShortLink,
