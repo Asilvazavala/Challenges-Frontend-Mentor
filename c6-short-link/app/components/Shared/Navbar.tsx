@@ -44,10 +44,10 @@ function Navbar() {
           {navbarLinks.map(({ title, link, icon, needsAuthentication }) => (
             <li
               key={title}
-              onClick={() => handleNavigation(link, needsAuthentication)}
+              // onClick={() => handleNavigation(link, needsAuthentication)}
               className="text-GrayishViolet lg:hover:text-VeryDarkBlue transition-colors cursor-pointer"
             >
-              {title}
+              <Link href={link}>{title}</Link>
             </li>
           ))}
         </ul>

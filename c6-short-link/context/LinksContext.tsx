@@ -29,7 +29,13 @@ type LinksProviderProps = {
 };
 
 export function LinksProvider({ children }: LinksProviderProps) {
-  const [shortenLinks, setShortenLinks] = useState<ShortenLink[]>([]);
+  const [shortenLinks, setShortenLinks] = useState<ShortenLink[]>([
+    {
+      link: "https://www.lavanguardia.com/andro4all/internet/mejores-webs-con-fuentes-de-letras",
+      shortLink: "https://www.lavanguardia.com",
+      copied: false,
+    },
+  ]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const value: LinksContextType = {

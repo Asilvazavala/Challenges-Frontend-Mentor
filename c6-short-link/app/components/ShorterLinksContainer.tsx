@@ -18,30 +18,34 @@ const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
         <article
           key={index}
           className="flex flex-col justify-between gap-6  
-        bg-white p-4 mb-4 rounded-md md:flex-row md:items-center lg:p-6"
+        bg-white p-4 mb-4 rounded-md lg:flex-row md:items-center lg:p-6 max-w-[91vw] md:max-w-[100vw]"
         >
           <Link
             href={link}
-            className="text-black"
+            className="text-black flex flex-col justify-center items-center flex-wrap 
+            lg:justify-start lg:items-start"
             target="_blank"
             rel="noopener"
           >
             <span className="text-gray-400">Your URL: </span>
-            {link}
+            <span className="text-ellipsis line-clamp-1 max-w-full">
+              {link}
+            </span>
           </Link>
 
           <aside
-            className="flex flex-col w-full items-start justify-end gap-2 bg-white 
-            md:w-auto md:justify-center md:flex-row md:items-center md:gap-6"
+            className="flex flex-col w-full items-center gap-2 bg-white 
+            md:w-auto justify-center lg:flex-row md:gap-6"
           >
             <Link
               href={`${shortLink}`}
-              className="text-DarkViolet"
+              className="text-DarkViolet flex flex-col justify-center items-center flex-wrap 
+              lg:flex-row lg:justify-start"
               target="_blank"
               rel="noopener"
             >
               <span className="text-gray-400">Shorten URL: </span>
-              {shortLink}
+              <span className="text-ellipsis">{shortLink}</span>
             </Link>
             <button
               onClick={() => handleCopy(index)}

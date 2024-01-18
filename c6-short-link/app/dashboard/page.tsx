@@ -59,12 +59,12 @@ const DashboardPage = () => {
         </main>
       ) : (
         <div className="flex justify-center items-center flex-col">
-          <h2 className="text-lg md:text-3xl mt-8 font-bold text-DarkViolet text-center">
+          <h2 className="text-lg md:text-2xl mt-8 font-bold text-DarkViolet text-center">
             Seems no links added
           </h2>
           <Link
             href="/#ShortLink"
-            className="underline text-gray-600 md:text-2xl transition lg:hover:text-gray-400"
+            className="underline text-gray-600 md:text-xl transition lg:hover:text-gray-400"
           >
             Try to add one here
           </Link>
