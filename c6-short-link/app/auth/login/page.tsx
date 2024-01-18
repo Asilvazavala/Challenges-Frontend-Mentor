@@ -6,9 +6,13 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useNotifications } from "../../../hooks/useNotifications";
+import { useLinks } from "../../../context/LinksContext";
+import Loading from "@/app/components/Loading";
 
 const LoginPage = () => {
   const router = useRouter();
+
+  const { isLoading, setIsLoading } = useLinks();
 
   const { notifySucess, notifyWarning } = useNotifications();
 
@@ -21,18 +25,25 @@ const LoginPage = () => {
   } = useForm();
 
   const onSubmit = handleSubmit(async (data) => {
-    const res = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    });
+    try {
+      setIsLoading(true);
+      const res = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
 
-    if (res?.error) {
-      notifyWarning(`${res.error}`);
-    } else {
-      notifySucess("Successful login");
-      router.push("/");
-      router.refresh();
+      if (res?.error) {
+        notifyWarning(`${res.error}`);
+      } else {
+        notifySucess("Successful login");
+        router.push("/");
+        router.refresh();
+      }
+    } catch (error) {
+      notifyWarning(`${error}`);
+    } finally {
+      setIsLoading(false);
     }
   });
 
@@ -86,9 +97,13 @@ const LoginPage = () => {
           )}
         </label>
 
-        <button className="w-full mt-2 bg-Cyan font-bold text-white p-3 rounded-lg lg:hover:brightness-125 transition">
+        <button
+          disabled={isLoading}
+          className="w-full my-2 bg-Cyan font-bold text-white p-3 rounded-lg lg:hover:brightness-125 transition"
+        >
           Log in
         </button>
+        {isLoading && <Loading />}
       </form>
     </SectionContainer>
   );

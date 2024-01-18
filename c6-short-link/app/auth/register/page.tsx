@@ -4,9 +4,13 @@ import SectionContainer from "@/app/components/Shared/SectionContainer";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useNotifications } from "../../../hooks/useNotifications";
+import { useLinks } from "../../../context/LinksContext";
+import Loading from "@/app/components/Loading";
 
 const RegisterPage = () => {
   const router = useRouter();
+
+  const { isLoading, setIsLoading } = useLinks();
 
   const { notifySucess, notifyWarning } = useNotifications();
 
@@ -21,25 +25,33 @@ const RegisterPage = () => {
       return notifyWarning("Passwords do not match");
     }
 
-    const res = await fetch("/api/auth/register", {
-      method: "POST",
-      body: JSON.stringify({
-        username: data.username,
-        email: data.email,
-        password: data.password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      setIsLoading(true);
 
-    if (res.ok) {
-      notifySucess("User created successfully");
-      router.push("/auth/login");
-    } else if (res.status === 401) {
-      notifyWarning("Email already exists, try with another");
-    } else {
-      notifyWarning("Username already exists, try with another");
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        body: JSON.stringify({
+          username: data.username,
+          email: data.email,
+          password: data.password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        notifySucess("User created successfully");
+        router.push("/auth/login");
+      } else if (res.status === 401) {
+        notifyWarning("Email already exists, try with another");
+      } else {
+        notifyWarning("Username already exists, try with another");
+      }
+    } catch (error) {
+      notifyWarning(`${error}`);
+    } finally {
+      setIsLoading(false);
     }
   });
 
@@ -128,9 +140,13 @@ const RegisterPage = () => {
           )}
         </label>
 
-        <button className="w-full mt-2 bg-Cyan font-bold text-white p-3 rounded-lg lg:hover:brightness-125 transition">
+        <button
+          disabled={isLoading}
+          className="w-full my-2 bg-Cyan font-bold text-white p-3 rounded-lg lg:hover:brightness-125 transition"
+        >
           Register
         </button>
+        {isLoading && <Loading />}
       </form>
     </SectionContainer>
   );
