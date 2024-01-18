@@ -6,25 +6,11 @@ import Link from "next/link";
 import SectionContainer from "./SectionContainer";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useNotifications } from "../../../hooks/useNotifications";
 
 function Navbar() {
   const { data: session, status } = useSession();
-  const { notifyWarning } = useNotifications();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const router = useRouter();
-
-  const handleNavigation = (link: string, needsAuthentication: boolean) => {
-    if (needsAuthentication && status === "unauthenticated") {
-      notifyWarning("Needs log in to enter dashboard");
-      router.push("/auth/login");
-    } else {
-      router.push(link);
-    }
-  };
 
   return (
     <SectionContainer>
@@ -41,10 +27,9 @@ function Navbar() {
             />
           </Link>
 
-          {navbarLinks.map(({ title, link, icon, needsAuthentication }) => (
+          {navbarLinks.map(({ title, link, icon }) => (
             <li
               key={title}
-              // onClick={() => handleNavigation(link, needsAuthentication)}
               className="text-GrayishViolet lg:hover:text-VeryDarkBlue transition-colors cursor-pointer"
             >
               <Link href={link}>{title}</Link>
@@ -112,13 +97,13 @@ function Navbar() {
               text-white bg-DarkViolet w-[90%] p-6 rounded-lg transition duration-700 delay-0
               ${isMenuOpen ? "scale-100" : "scale-0"} absolute left-4 top-14`}
           >
-            {navbarLinks.map(({ title, link, icon, needsAuthentication }) => (
+            {navbarLinks.map(({ title, link, icon }) => (
               <li
                 key={title}
-                onClick={() => handleNavigation(link, needsAuthentication)}
                 className="text-white lg:hover:text-VeryDarkBlue transition-colors"
+                onClick={() => setIsMenuOpen(false)}
               >
-                <span onClick={() => setIsMenuOpen(false)}>{title}</span>
+                <Link href={link}>{title}</Link>
               </li>
             ))}
             <hr className="border-GrayishViolet w-full"></hr>
