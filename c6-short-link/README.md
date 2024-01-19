@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Acerca del Acortador de Links
 
-## Getting Started
+Proyecto creado para acortar enlaces, los cuales se guardan en una base de datos y se administran en un panel, cuenta con autenticación de NextAuth, rutas protegidas, la información es consumida desde una API.
 
-First, run the development server:
+Tecnologías: Next.js, TypeScript, React, PostgreSQL & TailwindCSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+👉 Ve el proyecto aquí: [Acortador de links](https://short-link-as.vercel.app/)
+
+## 🧞 Comandos básicos
+
+Proyecto creado con:
+
+```sh
+npx create-next-app@latest shorter-link --typescript --eslint --tailwind
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Todos los comandos son ejecutados en la raíz del proyecto, desde la terminal:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Command         | Action                                      |
+| :-------------- | :------------------------------------------ |
+| `npm install`   | Installs dependencies                       |
+| `npm run dev`   | Starts local dev server at `localhost:3000` |
+| `npm run build` | Build your production site to `./dist/`     |
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 👀 Comandos de las dependencias
 
-## Learn More
+| Command                 | Action                   |
+| :---------------------- | :----------------------- |
+| `npm i prisma -D`       | Installs prisma          |
+| `npx prisma init`       | Starts prisma            |
+| `npm i react-hook-form` | Installs react-hook-form |
+| `npm i bcrypt`          | Installs bcrypt          |
+| `npm i @types/bcrypt`   | Installs bcrypt types    |
+| `npm i next-auth`       | Installs next-auth       |
+| `npm i react-hot-toast` | Installs react-hot-toast |
 
-To learn more about Next.js, take a look at the following resources:
+Instalar todas las dependencias:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+npm install prisma -D react-hook-form bcrypt @types/bcrypt next-auth react-hot-toast
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🎆 Imágenes del proyecto
 
-## Deploy on Vercel
+![logo](https://github.com/Asilvazavala/Astro-Portfolio/blob/f27e9df41230ec6e43c14b41cf33b136cb3f0e03/public/imagenes/Projects/shorter-link.webp)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![logo](https://github.com/Asilvazavala/My-Portfolio/blob/906a0fd188d53e75381934341341652a4db1e025/src/imagenes/Mobile/AcortadorLinks/acortadorLinksMobile.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![logo](https://github.com/Asilvazavala/My-Portfolio/blob/906a0fd188d53e75381934341341652a4db1e025/src/imagenes/Mobile/AcortadorLinks/acortadorLinksMobile2.png)
