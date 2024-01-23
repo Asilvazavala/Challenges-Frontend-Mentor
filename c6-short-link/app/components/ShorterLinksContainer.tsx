@@ -40,7 +40,7 @@ const ShorterLinksContainer: React.FC<ShorterLinksContainer> = ({
             <Link
               href={`${shortLink}`}
               className="text-DarkViolet flex flex-col justify-center items-center flex-wrap 
-              lg:flex-row lg:justify-start"
+              lg:justify-end lg:items-start"
               target="_blank"
               rel="noopener"
             >
